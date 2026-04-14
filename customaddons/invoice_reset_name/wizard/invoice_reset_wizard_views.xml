@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Wizard Form View -->
+    <record id="view_invoice_reset_name_wizard_form" model="ir.ui.view">
+        <field name="name">invoice.reset.name.wizard.form</field>
+        <field name="model">invoice.reset.name.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reset Invoice Names">
+                <group string="Filter by Date (optional)">
+                    <group>
+                        <field name="date_from"/>
+                    </group>
+                    <group>
+                        <field name="date_to"/>
+                    </group>
+                </group>
+                <group string="Preview">
+                    <field name="preview_html" widget="html" nolabel="1" colspan="2"/>
+                </group>
+                <footer>
+                    <button string="Preview" type="object" name="action_preview" class="btn-secondary"/>
+                    <button string="Apply" type="object" name="action_apply"
+                            class="btn-primary"
+                            confirm="This will permanently rename all matching posted invoices. Continue?"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Server Action to open wizard -->
+    <record id="action_invoice_reset_name_wizard" model="ir.actions.act_window">
+        <field name="name">Reset Invoice Names</field>
+        <field name="res_model">invoice.reset.name.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu under Invoicing > Customers > Reset Invoice Names -->
+    <menuitem
+        id="menu_invoice_reset_name"
+        name="Reset Invoice Names"
+        parent="account.menu_finance_receivables"
+        action="action_invoice_reset_name_wizard"
+        sequence="99"
+        groups="account.group_account_manager"/>
+
+</odoo>
