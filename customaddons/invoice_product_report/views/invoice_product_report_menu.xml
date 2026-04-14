@@ -1,0 +1,7 @@
+<odoo>
+    <menuitem id="menu_invoice_product_report_root" name="Reporting" parent="sale.sale_order_menu" sequence="100"/>
+    <menuitem id="menu_invoice_product_report" name="Invoice Product Report" parent="menu_invoice_product_report_root" action="action_invoice_product_report"/>
+    <!-- <menuitem id="menu_invoice_hsn_report" name="Invoice HSN Report" parent="menu_invoice_product_report_root" action="action_invoice_product_report"/> -->
+    <menuitem id="menu_invoice_hsn_report" name="HSN Summary Report"
+              parent="menu_invoice_product_report_root" action="action_invoice_hsn_report"/>
+</odoo>

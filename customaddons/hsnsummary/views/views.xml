@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="hsnsummary.list">
+      <field name="name">hsnsummary list</field>
+      <field name="model">hsnsummary.hsnsummary</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="hsnsummary.action_window">
+      <field name="name">hsnsummary window</field>
+      <field name="res_model">hsnsummary.hsnsummary</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="hsnsummary.action_server">
+      <field name="name">hsnsummary server</field>
+      <field name="model_id" ref="model_hsnsummary_hsnsummary"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="hsnsummary" id="hsnsummary.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="hsnsummary.menu_1" parent="hsnsummary.menu_root"/>
+    <menuitem name="Menu 2" id="hsnsummary.menu_2" parent="hsnsummary.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="hsnsummary.menu_1_list" parent="hsnsummary.menu_1"
+              action="hsnsummary.action_window"/>
+    <menuitem name="Server to list" id="hsnsummary" parent="hsnsummary.menu_2"
+              action="hsnsummary.action_server"/>
+-->
+  </data>
+</odoo>

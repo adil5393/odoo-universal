@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+      <record id ='sale_order_custom_inherit' model = "ir.ui.view">
+      <field name = 'name'>sale.order.custom.inherit</field>
+      <field name = 'model'>sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name = 'arch' type ='xml'>
+         <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='product_template_id']" position="after">
+            <field name="available_tags" column_invisible="True"/>
+            <field name="booktitle" domain="[('id', 'in', available_tags)]"/>
+          </xpath>
+        </field>
+    </record>
+
+
+    <record id = "stock_view_picking_form_inherit" model = 'ir.ui.view'>
+      <field name = 'name'>view.picking.form.inherit</field>
+      <field name = "model">stock.picking</field>
+      <field name = "inherit_id" ref = "stock.view_picking_form"/>
+      <field name = "arch" type = "xml">
+        <xpath expr = "//notebook//page//tree//field[@name = 'product_id']" position = "after">
+          <field name = 'booktitle'/>
+        </xpath>
+      </field>
+    </record>
+
+  </data>
+</odoo>
