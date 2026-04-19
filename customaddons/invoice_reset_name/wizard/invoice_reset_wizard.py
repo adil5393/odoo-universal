@@ -23,12 +23,13 @@ class InvoiceResetNameWizard(models.TransientModel):
         return str(fy_start_year)[-2:]
 
     def _get_invoice_type(self, move):
-        """Return 'TX' if invoice has any tax, else 'BS'."""
-        return 'TX' if move.amount_tax != 0 else 'BS'
+        """Return prefix: TX/BS for invoices, RTX/RBS for credit notes."""
+        base = 'TX' if move.amount_tax != 0 else 'BS'
+        return f'R{base}' if move.move_type == 'out_refund' else base
 
     def _build_invoice_domain(self):
         domain = [
-            ('move_type', '=', 'out_invoice'),
+            ('move_type', 'in', ['out_invoice', 'out_refund']),
             ('state', '=', 'posted'),
         ]
         if self.date_from:
@@ -88,13 +89,18 @@ class InvoiceResetNameWizard(models.TransientModel):
 
     def _sync_sequences(self, pairs):
         """After bulk rename, set each ir.sequence to continue from the last used number."""
-        # Find highest counter per (type, fy) key
         last_counters = {}
         for _move, new_name in pairs:
-            # new_name format: TX26/00045
+            # new_name format: TX26/00045 or RTX26/00003
             prefix_code, num_str = new_name.split('/')
-            inv_type = prefix_code[:2]       # 'TX' or 'BS'
-            fy = prefix_code[2:]             # '26'
+            # Extract FY (trailing digits) and type prefix (everything before)
+            fy = ''
+            for ch in reversed(prefix_code):
+                if ch.isdigit():
+                    fy = ch + fy
+                else:
+                    break
+            inv_type = prefix_code[:-len(fy)] if fy else prefix_code
             key = (inv_type, fy)
             last_counters[key] = max(last_counters.get(key, 0), int(num_str))
 
@@ -118,22 +124,46 @@ class InvoiceResetNameWizard(models.TransientModel):
                     'number_increment': 1,
                 })
 
+    def _get_journal_id(self, prefix_code):
+        """Look up TX or BS journal ID by name. Strip leading R for credit notes."""
+        journal_name = prefix_code.lstrip('R')  # RTX → TX, RBS → BS
+        journal = self.env['account.journal'].sudo().search(
+            [('name', '=', journal_name), ('company_id', '=', self.env.company.id)],
+            limit=1,
+        )
+        return journal.id if journal else None
+
     def action_apply(self):
         pairs = self._compute_new_names()
         if not pairs:
             return {'type': 'ir.actions.act_window_close'}
 
+        # Cache journal IDs once
+        journal_ids = {
+            'TX': self._get_journal_id('TX'),
+            'BS': self._get_journal_id('BS'),
+        }
+
         for move, new_name in pairs:
             seq_prefix, seq_num_str = new_name.split('/')
             seq_prefix += '/'
             seq_number = int(seq_num_str)
-            self.env.cr.execute(
-                "UPDATE account_move SET name = %s, sequence_prefix = %s, sequence_number = %s WHERE id = %s",
-                (new_name, seq_prefix, seq_number, move.id),
-            )
+            inv_type = new_name[:2]  # 'TX' or 'BS'
+            journal_id = journal_ids.get(inv_type)
+
+            if journal_id:
+                self.env.cr.execute(
+                    "UPDATE account_move SET name = %s, sequence_prefix = %s, sequence_number = %s, journal_id = %s WHERE id = %s",
+                    (new_name, seq_prefix, seq_number, journal_id, move.id),
+                )
+            else:
+                self.env.cr.execute(
+                    "UPDATE account_move SET name = %s, sequence_prefix = %s, sequence_number = %s WHERE id = %s",
+                    (new_name, seq_prefix, seq_number, move.id),
+                )
 
         # Invalidate cache so views reflect the new names immediately
-        self.env['account.move'].invalidate_model(['name', 'sequence_prefix', 'sequence_number'])
+        self.env['account.move'].invalidate_model(['name', 'sequence_prefix', 'sequence_number', 'journal_id'])
 
         # Sync sequences so future invoices continue from the right number
         self._sync_sequences(pairs)
