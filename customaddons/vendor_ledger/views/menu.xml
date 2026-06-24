@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="menu_vendor_ledger"
+        name="Vendor Ledger"
+        action="action_vendor_ledger_wizard"
+        parent="account.menu_finance_payables"
+        sequence="250"/>
+
+</odoo>

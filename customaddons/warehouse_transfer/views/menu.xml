@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="menu_warehouse_transfer"
+        name="Warehouse Transfer"
+        action="action_warehouse_transfer_wizard"
+        parent="stock.menu_warehouse_config"
+        sequence="20"/>
+
+</odoo>

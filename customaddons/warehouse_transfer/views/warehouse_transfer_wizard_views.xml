@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_warehouse_transfer_wizard_form" model="ir.ui.view">
+        <field name="name">warehouse.transfer.wizard.form</field>
+        <field name="model">warehouse.transfer.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Transfer All Stock Between Warehouses">
+                <group>
+                    <group string="Warehouses">
+                        <field name="source_warehouse_id" options="{'no_create': True}"/>
+                        <field name="dest_warehouse_id" options="{'no_create': True}"/>
+                    </group>
+                    <group string="Settings">
+                        <field name="scheduled_date"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="action_transfer"
+                            string="Transfer"
+                            type="object"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_warehouse_transfer_wizard" model="ir.actions.act_window">
+        <field name="name">Warehouse Transfer</field>
+        <field name="res_model">warehouse.transfer.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
