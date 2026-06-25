@@ -30,14 +30,11 @@ class InvoiceProductReportWizard(models.TransientModel):
         row = 1
 
         for line in lines:
-            if not line.product_id and line.product_id != False:
-                # If line doesn't have a product_id, we need to check if it's a valid service or discount
-                if line.name not in ['Discount', 'Tax']:
-                    continue  # Skip lines that don't have a product and are not discounts or taxe
+            if not line.product_id:
+                continue
             inv = line.move_id
             product = line.product_id
-            taxes = sum(t.amount for t in line.tax_ids)
-            total = line.price_subtotal + (line.price_subtotal*(taxes/100))
+            tax_amount = line.price_total - line.price_subtotal
 
             worksheet.write(row, 0, inv.name or '')
             worksheet.write(row, 1, str(inv.invoice_date or ''))
@@ -47,8 +44,8 @@ class InvoiceProductReportWizard(models.TransientModel):
             worksheet.write(row, 5, line.quantity)
             worksheet.write(row, 6, line.price_unit)
             worksheet.write(row, 7, line.price_subtotal)
-            worksheet.write(row, 8, taxes)
-            worksheet.write(row, 9, total)
+            worksheet.write(row, 8, tax_amount)
+            worksheet.write(row, 9, line.price_total)
             row += 1
 
         workbook.close()

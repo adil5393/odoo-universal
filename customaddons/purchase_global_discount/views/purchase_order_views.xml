@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_purchase_order_form_global_discount" model="ir.ui.view">
+        <field name="name">purchase.order.form.global.discount</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Add the global discount field + apply button above the order lines -->
+            <xpath expr="//page[@name='products']//field[@name='order_line']" position="before">
+                <div class="d-flex align-items-center gap-2 mb-2"
+                     invisible="state in ('done', 'cancel')">
+                    <label for="global_discount" string="Global Discount"/>
+                    <field name="global_discount"
+                           style="width:90px;"
+                           nolabel="1"/>
+                    <span>%</span>
+                    <button name="action_apply_global_discount"
+                            string="Apply to All Lines"
+                            type="object"
+                            class="btn btn-secondary btn-sm"
+                            confirm="This will overwrite the discount on every order line. Continue?"/>
+                </div>
+            </xpath>
+
+            <!-- Make the Disc.% column visible by default -->
+            <xpath expr="//page[@name='products']//field[@name='order_line']//field[@name='discount'][@optional='hide']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
