@@ -60,13 +60,14 @@
                     <table style="width:100%; border-collapse:collapse; font-size:10px;">
                         <thead>
                             <tr style="background-color:#2c3e50; color:#ffffff;">
-                                <th style="padding:8px 7px; text-align:left; width:82px; font-weight:600;">Date</th>
-                                <th style="padding:8px 7px; text-align:left; font-weight:600;">Reference</th>
-                                <th style="padding:8px 7px; text-align:left; width:72px; font-weight:600;">Type</th>
-                                <th style="padding:8px 7px; text-align:right; width:98px; font-weight:600;">Purchase</th>
-                                <th style="padding:8px 7px; text-align:right; width:98px; font-weight:600;">Payment</th>
-                                <th style="padding:8px 7px; text-align:right; width:98px; font-weight:600;">Refund</th>
-                                <th style="padding:8px 7px; text-align:right; width:98px; font-weight:600;">Balance</th>
+                                <th style="padding:8px 7px; text-align:left; width:75px; font-weight:600;">Date</th>
+                                <th style="padding:8px 7px; text-align:left; width:110px; font-weight:600;">Reference</th>
+                                <th style="padding:8px 7px; text-align:left; font-weight:600;">Memo / Cheque No.</th>
+                                <th style="padding:8px 7px; text-align:left; width:62px; font-weight:600;">Type</th>
+                                <th style="padding:8px 7px; text-align:right; width:88px; font-weight:600;">Purchase</th>
+                                <th style="padding:8px 7px; text-align:right; width:88px; font-weight:600;">Payment</th>
+                                <th style="padding:8px 7px; text-align:right; width:88px; font-weight:600;">Refund</th>
+                                <th style="padding:8px 7px; text-align:right; width:88px; font-weight:600;">Balance</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,7 +77,7 @@
                                 <td style="padding:6px 7px; border-bottom:1px solid #c5d8ee; font-weight:bold;">
                                     <t t-esc="data['date_from']"/>
                                 </td>
-                                <td colspan="5" style="padding:6px 7px; border-bottom:1px solid #c5d8ee; font-weight:bold; font-style:italic; color:#2c3e50;">
+                                <td colspan="6" style="padding:6px 7px; border-bottom:1px solid #c5d8ee; font-weight:bold; font-style:italic; color:#2c3e50;">
                                     Opening Balance
                                 </td>
                                 <td style="padding:6px 7px; border-bottom:1px solid #c5d8ee; font-weight:bold; text-align:right;">
@@ -90,8 +91,11 @@
                                     <td style="padding:5px 7px; border-bottom:1px solid #ebebeb; color:#444;">
                                         <t t-esc="line['date']"/>
                                     </td>
-                                    <td style="padding:5px 7px; border-bottom:1px solid #ebebeb; color:#333;">
+                                    <td style="padding:5px 7px; border-bottom:1px solid #ebebeb; color:#333; font-size:9px;">
                                         <t t-esc="line['reference']"/>
+                                    </td>
+                                    <td style="padding:5px 7px; border-bottom:1px solid #ebebeb; color:#555;">
+                                        <t t-esc="line['memo']"/>
                                     </td>
                                     <td style="padding:5px 7px; border-bottom:1px solid #ebebeb;">
                                         <span t-attf-style="
@@ -122,7 +126,7 @@
 
                             <!-- Totals Row -->
                             <tr style="background-color:#2c3e50; color:#ffffff; font-weight:bold;">
-                                <td colspan="3" style="padding:8px 7px; font-size:11px; letter-spacing:0.5px;">TOTAL</td>
+                                <td colspan="4" style="padding:8px 7px; font-size:11px; letter-spacing:0.5px;">TOTAL</td>
                                 <td style="padding:8px 7px; text-align:right;"><t t-esc="'{:,.2f}'.format(data['total_purchases'])"/></td>
                                 <td style="padding:8px 7px; text-align:right;"><t t-esc="'{:,.2f}'.format(data['total_payments'])"/></td>
                                 <td style="padding:8px 7px; text-align:right;"><t t-esc="'{:,.2f}'.format(data['total_refunds'])"/></td>
@@ -131,7 +135,7 @@
 
                             <!-- Closing Balance -->
                             <tr style="background-color:#dce8f8; font-weight:bold;">
-                                <td colspan="6" style="padding:8px 7px; font-size:11px; color:#2c3e50; font-style:italic;">Closing Balance</td>
+                                <td colspan="7" style="padding:8px 7px; font-size:11px; color:#2c3e50; font-style:italic;">Closing Balance</td>
                                 <td style="padding:8px 7px; text-align:right; font-size:12px; color:#2c3e50;">
                                     <t t-esc="'{:,.2f}'.format(data['closing_balance'])"/>
                                 </td>

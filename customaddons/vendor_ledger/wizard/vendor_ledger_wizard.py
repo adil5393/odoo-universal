@@ -75,8 +75,8 @@ class VendorLedgerWizard(models.TransientModel):
 
             lines.append({
                 'date': ml.date,
-                'reference': move.name or move.ref or '',
-                'narration': move.narration or move.ref or '',
+                'reference': move.name or '',
+                'memo': move.ref or '',
                 'type': entry_type,
                 'purchase': credit if entry_type == _('Purchase') else 0.0,
                 'payment': debit if entry_type == _('Payment') else 0.0,
