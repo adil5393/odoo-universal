@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree view for quantity lines (actual DB records — no virtual records) -->
+    <record id="view_inventory_multi_add_line_tree" model="ir.ui.view">
+        <field name="name">inventory.multi.add.line.tree</field>
+        <field name="model">inventory.multi.add.line</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="product_id" string="Product" readonly="1"/>
+                <field name="uom_id" string="UoM" readonly="1"/>
+                <field name="qty" string="Counted Quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Wizard form — two panels controlled by state -->
+    <record id="view_inventory_multi_add_wizard_form" model="ir.ui.view">
+        <field name="name">inventory.multi.add.wizard.form</field>
+        <field name="model">inventory.multi.add.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Multiple Products to Inventory">
+                <field name="state" invisible="1"/>
+                <sheet>
+
+                    <!-- Step 1: select location + products -->
+                    <group invisible="state == 'qty'">
+                        <field name="location_id" options="{'no_create': True}"/>
+                        <field name="product_ids"
+                               widget="many2many_tags"
+                               options="{'no_create': True}"
+                               string="Products"
+                               placeholder="Search and pick products — use Search More for checkboxes…"/>
+                    </group>
+
+                    <!-- Step 2: set quantities -->
+                    <group invisible="state == 'select'">
+                        <field name="location_id" readonly="1"/>
+                    </group>
+                    <separator string="Set Counted Quantities" invisible="state == 'select'"/>
+                    <field name="line_ids"
+                           nolabel="1"
+                           invisible="state == 'select'"
+                           context="{'tree_view_ref': 'inventory_multi_add.view_inventory_multi_add_line_tree'}"/>
+
+                </sheet>
+                <footer>
+                    <!-- Step 1 footer -->
+                    <button name="action_load_lines"
+                            type="object"
+                            string="Next: Set Quantities"
+                            class="btn-primary"
+                            invisible="state == 'qty'"/>
+
+                    <!-- Step 2 footer -->
+                    <button name="action_apply"
+                            type="object"
+                            string="Add to Inventory"
+                            class="btn-primary"
+                            invisible="state == 'select'"/>
+
+                    <button special="cancel" string="Discard"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action that opens the wizard -->
+    <record id="action_inventory_multi_add_wizard" model="ir.actions.act_window">
+        <field name="name">Add Multiple Products</field>
+        <field name="res_model">inventory.multi.add.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Menu item under Inventory > Adjustments -->
+    <menuitem id="menu_inventory_multi_add"
+              name="Add Multiple Products"
+              parent="stock.menu_stock_adjustments"
+              action="action_inventory_multi_add_wizard"
+              sequence="20"/>
+
+</odoo>

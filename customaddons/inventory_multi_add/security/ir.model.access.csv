@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_inventory_multi_add_wizard,inventory.multi.add.wizard,model_inventory_multi_add_wizard,base.group_user,1,1,1,1
+access_inventory_multi_add_line,inventory.multi.add.line,model_inventory_multi_add_line,base.group_user,1,1,1,1
