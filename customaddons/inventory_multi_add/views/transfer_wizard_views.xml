@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_transfer_multi_add_line_tree" model="ir.ui.view">
+        <field name="name">transfer.multi.add.line.tree</field>
+        <field name="model">transfer.multi.add.line</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="product_id" string="Product" readonly="1"/>
+                <field name="uom_id" string="UoM" readonly="1"/>
+                <field name="qty" string="Quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_transfer_multi_add_wizard_form" model="ir.ui.view">
+        <field name="name">transfer.multi.add.wizard.form</field>
+        <field name="model">transfer.multi.add.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Multiple Products to Transfer">
+                <field name="state" invisible="1"/>
+                <sheet>
+
+                    <!-- Step 1 -->
+                    <group invisible="state == 'qty'">
+                        <field name="picking_id" readonly="1"/>
+                        <field name="product_ids"
+                               widget="many2many_tags"
+                               options="{'no_create': True}"
+                               string="Products"
+                               placeholder="Search products — use Search More for checkboxes…"/>
+                    </group>
+
+                    <!-- Step 2 -->
+                    <group invisible="state == 'select'">
+                        <field name="picking_id" readonly="1"/>
+                    </group>
+                    <separator string="Set Quantities" invisible="state == 'select'"/>
+                    <field name="line_ids"
+                           nolabel="1"
+                           invisible="state == 'select'"
+                           context="{'tree_view_ref': 'inventory_multi_add.view_transfer_multi_add_line_tree'}"/>
+
+                </sheet>
+                <footer>
+                    <button name="action_load_lines"
+                            type="object"
+                            string="Next: Set Quantities"
+                            class="btn-primary"
+                            invisible="state == 'qty'"/>
+                    <button name="action_apply"
+                            type="object"
+                            string="Add to Transfer"
+                            class="btn-primary"
+                            invisible="state == 'select'"/>
+                    <button special="cancel" string="Discard"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
