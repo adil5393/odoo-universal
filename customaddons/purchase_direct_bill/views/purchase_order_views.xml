@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_purchase_order_form_direct_bill" model="ir.ui.view">
+        <field name="name">purchase.order.form.direct.bill</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//header/field[@name='state']" position="before">
+                <button name="action_create_direct_bill"
+                        string="Create Bill (Copy PO Lines)"
+                        type="object"
+                        class="btn-secondary"
+                        invisible="state not in ('purchase', 'done')"
+                        confirm="This copies all order lines into a new vendor bill, regardless of received quantity. Continue?"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
