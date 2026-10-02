@@ -1,0 +1,127 @@
+// ============================================================================
+// Universal Dark Theme - Top Navbar & App Launcher
+// Visual Direction: Minimalist Deep Graphite Chrome Header
+// ============================================================================
+
+body.o_web_client {
+    .o_main_navbar {
+        background-color: #0d1015 !important;
+        border-bottom: 1px solid var(--u-dark-border-subtle) !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        color: var(--u-dark-text-secondary);
+
+        // App Switcher Icon Button
+        .o_navbar_apps_menu {
+            .dropdown-toggle {
+                color: #ffffff !important;
+                background-color: transparent !important;
+                border: none !important;
+                padding: 0 14px;
+                border-radius: 4px;
+                transition: background-color 0.15s ease;
+
+                &:hover,
+                &:focus {
+                    background-color: rgba(255, 255, 255, 0.08) !important;
+                }
+            }
+        }
+
+        // Brand / Current App Title
+        .o_menu_brand {
+            color: #ffffff !important;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: -0.01em;
+            padding-left: 6px;
+        }
+
+        // Section Menus (Orders, Products, Configuration, Reporting)
+        .o_menu_sections {
+            .o_nav_entry,
+            .dropdown-toggle {
+                color: var(--u-dark-text-secondary) !important;
+                background-color: transparent !important;
+                border-radius: 4px;
+                padding: 6px 12px;
+                margin: 0 1px;
+                transition: all 0.12s ease;
+
+                &:hover,
+                &:focus {
+                    color: #ffffff !important;
+                    background-color: var(--u-dark-surface-hover) !important;
+                }
+
+                &:active {
+                    color: #ffffff !important;
+                    background-color: var(--u-dark-surface-selected) !important;
+                }
+            }
+
+            .dropdown.show > .dropdown-toggle {
+                color: #ffffff !important;
+                background-color: var(--u-dark-surface-selected) !important;
+            }
+        }
+
+        // Systray Items (Activities, Messages, Settings, User avatar)
+        .o_menu_systray {
+            .o_nav_entry,
+            .dropdown-toggle,
+            .o_sys_action {
+                color: var(--u-dark-text-secondary) !important;
+                background-color: transparent !important;
+                border-radius: 4px;
+                padding: 6px 10px;
+                margin: 0 1px;
+                transition: all 0.12s ease;
+
+                &:hover,
+                &:focus {
+                    color: #ffffff !important;
+                    background-color: rgba(255, 255, 255, 0.08) !important;
+                }
+
+                i.fa {
+                    color: inherit;
+                }
+            }
+
+            .dropdown.show > .dropdown-toggle {
+                color: #ffffff !important;
+                background-color: rgba(255, 255, 255, 0.12) !important;
+            }
+
+            // Notification / Activity Badges on Systray
+            .badge {
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+                font-weight: 600;
+            }
+
+            .o_notification_counter {
+                background-color: var(--u-dark-accent-primary) !important;
+                color: #ffffff !important;
+            }
+        }
+    }
+
+    // App Switcher / Home Menu Fullscreen Overlay
+    .o_home_menu,
+    .o_apps {
+        background-color: var(--u-dark-canvas) !important;
+
+        .o_app {
+            .o_caption {
+                color: var(--u-dark-text-primary) !important;
+                font-weight: 500;
+            }
+
+            &:hover,
+            &:focus {
+                background-color: var(--u-dark-surface-hover) !important;
+                border-radius: 8px;
+            }
+        }
+    }
+}

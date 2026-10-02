@@ -1,0 +1,255 @@
+// ============================================================================
+// Universal Dark Theme - Chatter, Activities & Mail Threads
+// Visual Direction: Modern Dark Communication Stream
+// ============================================================================
+
+body.o_web_client {
+    .o_chatter,
+    .o-mail-ChatterContainer,
+    .o-mail-Form-chatter,
+    .o-mail-Chatter {
+        background-color: var(--u-dark-canvas) !important;
+        border-left: 1px solid var(--u-dark-border-subtle) !important;
+
+        // Top Action Bar
+        .o-mail-Chatter-top {
+            background-color: var(--u-dark-surface-raised) !important;
+            border-bottom: 1px solid var(--u-dark-border-default) !important;
+            box-shadow: none !important;
+
+            button {
+                color: var(--u-dark-text-secondary) !important;
+                background-color: transparent !important;
+                transition: all 0.12s ease;
+
+                &:hover {
+                    color: #ffffff !important;
+                    background-color: var(--u-dark-surface-hover) !important;
+                }
+
+                &.o-active,
+                &.active {
+                    color: #d8c2ff !important;
+                    font-weight: 600;
+                    border-bottom: 2px solid var(--u-dark-accent-primary) !important;
+                }
+            }
+
+            // Followers Button
+            .o-mail-Followers-button {
+                color: var(--u-dark-text-secondary) !important;
+
+                &:hover {
+                    color: #ffffff !important;
+                    background-color: var(--u-dark-surface-hover) !important;
+                }
+            }
+        }
+
+        // Followers Dropdown
+        .o-mail-Followers-dropdown {
+            background-color: var(--u-dark-surface) !important;
+            border: 1px solid var(--u-dark-border-default) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+
+            .o-mail-Follower {
+                color: var(--u-dark-text-primary) !important;
+
+                &:hover {
+                    background-color: var(--u-dark-surface-hover) !important;
+                }
+            }
+        }
+
+        // Search Bar in Chatter
+        .o-mail-Chatter-search {
+            background-color: var(--u-dark-input-bg) !important;
+            border: 1px solid var(--u-dark-border-default) !important;
+            color: var(--u-dark-text-primary) !important;
+        }
+
+        // --------------------------------------------------------------------
+        // Composer Box
+        // --------------------------------------------------------------------
+        .o-mail-Composer {
+            background-color: var(--u-dark-surface) !important;
+            border: 1px solid var(--u-dark-border-default) !important;
+            border-radius: 8px !important;
+            margin: 12px;
+            padding: 10px;
+
+            textarea,
+            .o-mail-Composer-input {
+                background-color: var(--u-dark-input-bg) !important;
+                color: var(--u-dark-text-primary) !important;
+                border: 1px solid var(--u-dark-border-subtle) !important;
+                border-radius: 4px;
+
+                &:focus {
+                    border-color: var(--u-dark-accent-primary) !important;
+                    outline: none;
+                }
+            }
+
+            .o-mail-Composer-actions {
+                border-top: 1px solid var(--u-dark-border-subtle);
+                padding-top: 6px;
+                margin-top: 6px;
+            }
+        }
+
+        // --------------------------------------------------------------------
+        // Thread Messages & Notes
+        // --------------------------------------------------------------------
+        .o-mail-Thread {
+            background-color: transparent !important;
+
+            .o-mail-Message {
+                background-color: var(--u-dark-surface) !important;
+                border: 1px solid var(--u-dark-border-subtle) !important;
+                border-radius: 8px;
+                margin: 8px 12px;
+                padding: 10px 14px;
+                transition: background-color 0.12s ease;
+
+                &:hover {
+                    background-color: var(--u-dark-surface-hover) !important;
+                    border-color: var(--u-dark-border-default) !important;
+                }
+
+                // Author Header
+                .o-mail-Message-author {
+                    color: #ffffff !important;
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                }
+
+                // Date / Timestamp
+                .o-mail-Message-date {
+                    color: var(--u-dark-text-muted) !important;
+                    font-size: 0.78rem;
+                }
+
+                // Message Text Content
+                .o-mail-Message-content,
+                .o-mail-Message-body {
+                    color: var(--u-dark-text-primary) !important;
+                    font-size: 0.88rem;
+                    line-height: 1.5;
+
+                    p, div, span {
+                        color: inherit;
+                    }
+
+                    blockquote {
+                        border-left: 3px solid var(--u-dark-border-strong);
+                        color: var(--u-dark-text-secondary);
+                        padding-left: 10px;
+                        margin-left: 0;
+                    }
+                }
+
+                // Internal Log Note (Differentiated warm amber tone)
+                &.o-mail-Message--note {
+                    background-color: #24211a !important;
+                    border: 1px solid #3c3320 !important;
+
+                    &:hover {
+                        background-color: #2b271f !important;
+                    }
+
+                    .o-mail-Message-author {
+                        color: #f6e05e !important;
+                    }
+                }
+
+                &.o-mail-Message--starred {
+                    border-left: 3px solid var(--u-dark-status-warning);
+                }
+            }
+
+            // Date Pills
+            .o-mail-DateSection {
+                color: var(--u-dark-text-secondary) !important;
+                background-color: var(--u-dark-surface-raised) !important;
+                border: 1px solid var(--u-dark-border-default) !important;
+                border-radius: 12px;
+                font-size: 0.78rem;
+                font-weight: 600;
+                padding: 2px 14px;
+            }
+        }
+
+        // --------------------------------------------------------------------
+        // Scheduled Activities
+        // --------------------------------------------------------------------
+        .o-mail-Activity {
+            background-color: var(--u-dark-surface) !important;
+            border: 1px solid var(--u-dark-border-default) !important;
+            border-radius: 6px;
+            margin: 6px 12px;
+            padding: 8px 12px;
+
+            .o-mail-Activity-summary {
+                color: #ffffff !important;
+                font-weight: 600;
+            }
+
+            .o-mail-Activity-user {
+                color: var(--u-dark-text-secondary) !important;
+            }
+
+            &.o-overdue {
+                border-left: 4px solid var(--u-dark-status-danger) !important;
+            }
+
+            &.o-today {
+                border-left: 4px solid var(--u-dark-status-warning) !important;
+            }
+
+            &.o-planned {
+                border-left: 4px solid var(--u-dark-status-success) !important;
+            }
+        }
+    }
+
+    // Discuss Main Application
+    .o-mail-Discuss {
+        background-color: var(--u-dark-canvas) !important;
+
+        .o-mail-Discuss-sidebar {
+            background-color: var(--u-dark-surface-view) !important;
+            border-right: 1px solid var(--u-dark-border-subtle) !important;
+
+            .o-mail-DiscussSidebarCategory-title {
+                color: var(--u-dark-text-secondary) !important;
+                font-size: 0.72rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .o-mail-DiscussSidebarChannel {
+                color: var(--u-dark-text-primary) !important;
+                border-radius: 4px;
+                margin: 1px 8px;
+                padding: 6px 10px;
+
+                &:hover {
+                    background-color: var(--u-dark-surface-hover) !important;
+                    color: #ffffff !important;
+                }
+
+                &.o-active {
+                    background-color: var(--u-dark-surface-raised) !important;
+                    color: #ffffff !important;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .o-mail-Discuss-content {
+            background-color: var(--u-dark-canvas) !important;
+        }
+    }
+}

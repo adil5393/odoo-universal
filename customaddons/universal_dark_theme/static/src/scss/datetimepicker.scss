@@ -1,0 +1,150 @@
+// ============================================================================
+// Universal Dark Theme - Date & Time Picker
+// Visual Direction: Modern Dark Popover Calendar
+// ============================================================================
+
+body.o_web_client {
+    .o_datetime_picker {
+        background-color: var(--u-dark-surface) !important;
+        border: 1px solid var(--u-dark-border-strong) !important;
+        border-radius: 8px !important;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55) !important;
+        color: var(--u-dark-text-primary) !important;
+        padding: 14px;
+
+        // Header Navigation (Month, Year, Prev, Next)
+        .o_datetime_picker_header {
+            border-bottom: 1px solid var(--u-dark-border-subtle);
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+
+            .o_header_part {
+                color: #ffffff !important;
+                font-weight: 600;
+
+                &:hover {
+                    color: var(--u-dark-text-link) !important;
+                }
+            }
+
+            button {
+                color: var(--u-dark-text-secondary) !important;
+                background-color: transparent !important;
+                border: none !important;
+                border-radius: 4px;
+                padding: 4px 8px;
+                transition: background-color 0.12s ease;
+
+                &:hover {
+                    background-color: var(--u-dark-surface-hover) !important;
+                    color: #ffffff !important;
+                }
+            }
+        }
+
+        // Days of week labels (Mo, Tu, We...)
+        .o_day_of_week_cell {
+            color: var(--u-dark-text-secondary) !important;
+            font-weight: 600;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+        }
+
+        // Calendar Day Cells
+        .o_date_item_cell {
+            color: var(--u-dark-text-primary) !important;
+            border-radius: 4px;
+            transition: all 0.1s ease;
+
+            &:hover {
+                background-color: var(--u-dark-surface-hover) !important;
+                color: #ffffff !important;
+            }
+
+            // Today's date
+            &.o_current {
+                border: 1px solid var(--u-dark-accent-primary-hover) !important;
+                font-weight: 600;
+                color: #ffffff !important;
+
+                &:before {
+                    display: none;
+                }
+            }
+
+            // Selected date
+            &.o_selected {
+                background-color: var(--u-dark-accent-primary) !important;
+                color: #ffffff !important;
+                font-weight: 700;
+
+                &:before {
+                    display: none;
+                }
+            }
+
+            // Out of current month
+            &.o_out_of_range,
+            &.text-muted {
+                color: var(--u-dark-text-muted) !important;
+                opacity: 0.5;
+            }
+        }
+
+        // Month & Year Picker Grids (when zooming out)
+        .o_month_cell,
+        .o_year_cell {
+            color: var(--u-dark-text-primary) !important;
+            border-radius: 4px;
+
+            &:hover {
+                background-color: var(--u-dark-surface-hover) !important;
+                color: #ffffff !important;
+            }
+
+            &.o_selected {
+                background-color: var(--u-dark-accent-primary) !important;
+                color: #ffffff !important;
+                font-weight: 700;
+            }
+
+            &.o_current {
+                border: 1px solid var(--u-dark-accent-primary-hover) !important;
+            }
+        }
+
+        // Time Picker Section
+        .o_time_picker {
+            border-top: 1px solid var(--u-dark-border-subtle);
+            padding-top: 10px;
+            margin-top: 10px;
+
+            .o_time_picker_select {
+                background-color: var(--u-dark-input-bg) !important;
+                color: var(--u-dark-text-primary) !important;
+                border: 1px solid var(--u-dark-border-default) !important;
+                border-radius: 4px;
+
+                &:focus {
+                    border-color: var(--u-dark-accent-primary) !important;
+                }
+            }
+
+            .btn {
+                color: var(--u-dark-text-secondary);
+
+                &:hover {
+                    color: #ffffff;
+                    background-color: var(--u-dark-surface-hover);
+                }
+            }
+        }
+
+        // Action Buttons at bottom
+        .o_datetime_picker_buttons {
+            border-top: 1px solid var(--u-dark-border-subtle);
+            padding-top: 8px;
+            margin-top: 8px;
+        }
+    }
+}

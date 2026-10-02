@@ -1,0 +1,482 @@
+// ============================================================================
+// Universal Dark Theme - Form Views, Sheets, Statusbars & Notebook Tabs
+// Visual Direction: Modern Enterprise Card Sheet & Elevated Chrome
+// ============================================================================
+
+body.o_web_client {
+    // Main Form View Container
+    .o_form_view {
+        background-color: var(--u-dark-canvas) !important;
+        color: var(--u-dark-text-primary) !important;
+
+        // Outer sheet canvas (Surrounding background area)
+        .o_form_sheet_bg {
+            background-color: var(--u-dark-canvas) !important;
+            border-bottom: 1px solid var(--u-dark-border-subtle) !important;
+            padding: 16px 24px;
+
+            // ----------------------------------------------------------------
+            // Form Statusbar (Stage bar and action buttons)
+            // ----------------------------------------------------------------
+            .o_form_statusbar {
+                background-color: var(--u-dark-surface-raised) !important;
+                border: 1px solid var(--u-dark-border-default) !important;
+                border-radius: 8px 8px 0 0;
+                padding: 6px 12px;
+                margin-bottom: 0;
+
+                .o_statusbar_buttons {
+                    .btn {
+                        margin-right: 4px;
+                    }
+                }
+
+                // Stage arrow indicators
+                .o_statusbar_status {
+                    .o_arrow_button {
+                        background-color: var(--u-dark-surface) !important;
+                        color: var(--u-dark-text-secondary) !important;
+                        border: 1px solid var(--u-dark-border-default) !important;
+                        font-weight: 500;
+                        padding: 4px 12px;
+                        transition: all 0.12s ease;
+
+                        &:not(:first-child):before,
+                        &:not(:first-child):after {
+                            border-left-color: var(--u-dark-border-default) !important;
+                        }
+
+                        &:hover {
+                            background-color: var(--u-dark-surface-hover) !important;
+                            color: #ffffff !important;
+                        }
+
+                        // Active / Current stage
+                        &.o_arrow_button_current {
+                            background-color: #382d4c !important;
+                            color: #d8c2ff !important;
+                            border-color: var(--u-dark-accent-primary) !important;
+                            font-weight: 600 !important;
+
+                            &:after {
+                                border-left-color: #382d4c !important;
+                            }
+                        }
+
+                        &.disabled {
+                            opacity: 0.45;
+                            cursor: default;
+                        }
+                    }
+                }
+            }
+
+            // ----------------------------------------------------------------
+            // The Form Sheet (Elevated Graphite Card)
+            // ----------------------------------------------------------------
+            .o_form_sheet {
+                background-color: var(--u-dark-surface) !important;
+                border: 1px solid var(--u-dark-border-default) !important;
+                border-radius: 8px !important;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45) !important;
+                color: var(--u-dark-text-primary) !important;
+                padding: 24px;
+                margin-top: 8px;
+                margin-bottom: 24px;
+
+                // Document Title / Header
+                .oe_title,
+                h1, h2, h3 {
+                    color: #ffffff !important;
+                    font-weight: 700;
+
+                    .o_field_char,
+                    span, input {
+                        color: inherit !important;
+                    }
+                }
+
+                // Form ribbon badges (e.g. Paid, Archived, Cancelled)
+                .o_ribbon {
+                    color: #ffffff !important;
+                }
+            }
+        }
+
+        // Non-sheet forms (Wizards, Settings modal dialogs)
+        &.o_form_nosheet,
+        .o_form_nosheet {
+            background-color: var(--u-dark-surface) !important;
+            color: var(--u-dark-text-primary) !important;
+        }
+
+        // --------------------------------------------------------------------
+        // Smart Stat Buttons (.oe_button_box)
+        // --------------------------------------------------------------------
+        .oe_button_box {
+            .oe_stat_button {
+                background-color: var(--u-dark-surface-raised) !important;
+                border: 1px solid var(--u-dark-border-default) !important;
+                border-radius: 6px !important;
+                padding: 6px 12px;
+                margin: 0 4px 4px 0;
+                transition: all 0.12s ease;
+
+                &:hover {
+                    background-color: var(--u-dark-surface-hover) !important;
+                    border-color: var(--u-dark-border-strong) !important;
+                }
+
+                .o_stat_value {
+                    color: #ffffff !important;
+                    font-weight: 700;
+                    font-size: 1.15rem;
+                }
+
+                .o_stat_text {
+                    color: var(--u-dark-text-secondary) !important;
+                    font-size: 0.78rem;
+                }
+
+                .o_button_icon {
+                    color: var(--u-dark-accent-primary-hover) !important;
+                }
+            }
+        }
+
+        // --------------------------------------------------------------------
+        // Field Labels & Groupings
+        // --------------------------------------------------------------------
+        .o_group,
+        .o_inner_group {
+            background-color: transparent !important;
+            color: var(--u-dark-text-primary) !important;
+
+            .o_form_label {
+                color: var(--u-dark-text-secondary) !important;
+                font-weight: 500;
+                font-size: 0.88rem;
+
+                &.o_form_label_required {
+                    font-weight: 600;
+                    color: var(--u-dark-text-primary) !important;
+
+                    &:after {
+                        content: " *";
+                        color: var(--u-dark-accent-primary-hover);
+                    }
+                }
+            }
+        }
+
+        // --------------------------------------------------------------------
+        // Field Values & Input Controls
+        // --------------------------------------------------------------------
+        .o_field_widget {
+            color: var(--u-dark-text-primary) !important;
+            background-color: transparent !important;
+
+            // In read-only mode, ensure values and spans are high-contrast crisp
+            span, div, p {
+                color: inherit;
+            }
+
+            a:not(.btn) {
+                color: var(--u-dark-text-link) !important;
+                &:hover {
+                    color: var(--u-dark-text-link-hover) !important;
+                }
+            }
+
+            // Input elements inside fields
+            .o_input,
+            input.o_input,
+            textarea.o_input,
+            select.o_input {
+                background-color: var(--u-dark-input-bg) !important;
+                color: var(--u-dark-text-primary) !important;
+                border-color: var(--u-dark-border-default) !important;
+
+                &:focus,
+                &:hover:focus {
+                    background-color: var(--u-dark-surface-alt) !important;
+                    border-color: var(--u-dark-accent-primary) !important;
+                    outline: none !important;
+                    box-shadow: 0 0 0 2px var(--u-dark-accent-tint) !important;
+                }
+
+                &::placeholder {
+                    color: var(--u-dark-text-muted) !important;
+                }
+            }
+        }
+
+        // Section separators inside forms
+        .o_horizontal_separator {
+            color: var(--u-dark-accent-primary-hover) !important;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--u-dark-border-default) !important;
+            padding-bottom: 4px;
+        }
+
+        // --------------------------------------------------------------------
+        // Notebook Tabs & Content - Complete Dark Surfaces
+        // --------------------------------------------------------------------
+        .o_notebook {
+            margin-top: 16px;
+            background-color: transparent !important;
+
+            // Entire tab bar container - Eliminates the white strip!
+            .o_notebook_headers {
+                background-color: var(--u-dark-surface) !important;
+                border-bottom: 1px solid var(--u-dark-border-default) !important;
+
+                .nav,
+                .nav.nav-tabs,
+                ul.nav {
+                    background-color: var(--u-dark-surface) !important;
+                    border-bottom: none !important;
+
+                    .nav-item {
+                        background-color: transparent !important;
+
+                        .nav-link {
+                            color: var(--u-dark-text-secondary) !important;
+                            background-color: transparent !important;
+                            border: 1px solid transparent !important;
+                            border-bottom: 2px solid transparent !important;
+                            padding: 8px 18px;
+                            font-weight: 500;
+                            font-size: 0.9rem;
+                            transition: all 0.12s ease;
+
+                            &:hover, &:focus {
+                                color: #ffffff !important;
+                                background-color: var(--u-dark-surface-hover) !important;
+                                border-color: transparent !important;
+                                border-radius: 6px 6px 0 0;
+                            }
+
+                            // Active Tab: Dark elevated graphite surface + Accent border
+                            &.active {
+                                background-color: var(--u-dark-surface-raised) !important;
+                                color: #ffffff !important;
+                                border-color: var(--u-dark-border-default) var(--u-dark-border-default) transparent var(--u-dark-border-default) !important;
+                                border-top: 2px solid var(--u-dark-accent-primary) !important;
+                                border-bottom: 2px solid transparent !important;
+                                border-radius: 6px 6px 0 0;
+                                font-weight: 600 !important;
+                            }
+
+                            &.disabled {
+                                color: var(--u-dark-text-muted) !important;
+                                opacity: 0.35;
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Vertical notebook tabs
+            &.vertical {
+                .o_notebook_headers {
+                    border-bottom: none !important;
+                    border-right: 1px solid var(--u-dark-border-default) !important;
+
+                    .nav {
+                        background-color: var(--u-dark-surface) !important;
+                    }
+                }
+
+                .nav-link.active {
+                    border-left: 2px solid var(--u-dark-accent-primary) !important;
+                    border-right: 1px solid transparent !important;
+                    border-top: 1px solid var(--u-dark-border-default) !important;
+                    border-bottom: 1px solid var(--u-dark-border-default) !important;
+                }
+            }
+
+            // Tab Pane Content
+            .o_notebook_content,
+            .tab-content {
+                background-color: transparent !important;
+                border-bottom: none !important;
+                padding-top: 16px;
+
+                .tab-pane {
+                    background-color: transparent !important;
+                    color: var(--u-dark-text-primary) !important;
+                }
+            }
+        }
+
+        // --------------------------------------------------------------------
+        // Embedded One2Many & Many2Many Tables (Order Lines, Other Info)
+        // Designed for clear visual depth against form sheet
+        // --------------------------------------------------------------------
+        .o_field_x2many,
+        .o_field_widget .o_list_renderer,
+        .o_field_x2many .o_list_renderer,
+        .o_notebook .o_list_renderer {
+            --ListRenderer-thead-bg-color: var(--u-dark-surface-raised) !important;
+            --ListRenderer-tfoot-bg-color: var(--u-dark-surface-raised) !important;
+            background-color: var(--u-dark-surface-alt) !important;
+            border: 1px solid var(--u-dark-border-default) !important;
+            border-radius: 6px !important;
+            overflow: hidden !important;
+
+            // Embedded Table
+            table.o_list_table {
+                background-color: var(--u-dark-surface-alt) !important;
+                color: var(--u-dark-text-primary) !important;
+
+                > thead {
+                    background-color: var(--u-dark-surface-raised) !important;
+                    border-bottom: 1px solid var(--u-dark-border-default) !important;
+
+                    > tr > th {
+                        background-color: var(--u-dark-surface-raised) !important;
+                        color: var(--u-dark-text-secondary) !important;
+                        border-color: var(--u-dark-border-default) !important;
+                        font-weight: 600;
+                        font-size: 0.82rem;
+                        text-transform: uppercase;
+                        letter-spacing: 0.04em;
+                        box-shadow: none !important;
+                    }
+                }
+
+                > tbody {
+                    background-color: transparent !important;
+
+                    > tr.o_data_row {
+                        background-color: var(--u-dark-surface) !important;
+                        color: var(--u-dark-text-primary) !important;
+
+                        > td {
+                            background-color: var(--u-dark-surface) !important;
+                            color: var(--u-dark-text-primary) !important;
+                            border-color: var(--u-dark-border-subtle) !important;
+                            box-shadow: none !important;
+                        }
+
+                        // Alternating row striping
+                        &:nth-of-type(even) {
+                            background-color: var(--u-dark-surface-alt) !important;
+                            > td {
+                                background-color: var(--u-dark-surface-alt) !important;
+                            }
+                        }
+
+                        // Row hover state
+                        &:hover,
+                        &:hover > td {
+                            background-color: var(--u-dark-surface-hover) !important;
+                            color: #ffffff !important;
+                        }
+
+                        // Selected row
+                        &.o_data_row_selected,
+                        &.table-info,
+                        &.o_selected_row {
+                            background-color: var(--u-dark-surface-selected) !important;
+                            > td {
+                                background-color: var(--u-dark-surface-selected) !important;
+                            }
+                        }
+                    }
+
+                    // "Add a line" action row
+                    > tr.o_field_x2many_list_row_add,
+                    > tr:not(.o_data_row) {
+                        background-color: var(--u-dark-surface-alt) !important;
+
+                        > td {
+                            background-color: var(--u-dark-surface-alt) !important;
+                            color: var(--u-dark-text-secondary) !important;
+                            border-color: var(--u-dark-border-default) !important;
+                            padding: 8px 12px;
+
+                            a {
+                                color: var(--u-dark-accent-primary-hover) !important;
+                                font-weight: 500;
+                                text-decoration: none;
+
+                                &:hover {
+                                    color: #d8c2ff !important;
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // Table footer (totals, summary)
+                > tfoot {
+                    background-color: var(--u-dark-surface-raised) !important;
+                    border-top: 1px solid var(--u-dark-border-default) !important;
+
+                    > tr > td {
+                        background-color: var(--u-dark-surface-raised) !important;
+                        color: var(--u-dark-text-primary) !important;
+                        border-color: var(--u-dark-border-default) !important;
+                        font-weight: 600;
+                        box-shadow: none !important;
+                    }
+                }
+            }
+        }
+
+        // X2Many control panel (Action buttons & Pager)
+        .o_x2m_control_panel,
+        .o_x2many_control_panel {
+            background-color: transparent !important;
+            padding: 6px 0;
+
+            .o_cp_buttons {
+                background-color: transparent !important;
+            }
+            .o_cp_pager {
+                background-color: transparent !important;
+                color: var(--u-dark-text-secondary) !important;
+            }
+        }
+
+        // --------------------------------------------------------------------
+        // HTML Editor / Notes inside Notebook Tabs
+        // --------------------------------------------------------------------
+        .note-editor.panel,
+        .note-editor {
+            border: 1px solid var(--u-dark-border-default) !important;
+            border-radius: 6px;
+            overflow: hidden;
+
+            .note-toolbar.panel-heading,
+            .note-toolbar {
+                background-color: var(--u-dark-surface-raised) !important;
+                border-bottom: 1px solid var(--u-dark-border-default) !important;
+                color: var(--u-dark-text-primary) !important;
+
+                .btn {
+                    background-color: var(--u-dark-surface) !important;
+                    color: var(--u-dark-text-primary) !important;
+                    border-color: var(--u-dark-border-default) !important;
+
+                    &:hover {
+                        background-color: var(--u-dark-surface-hover) !important;
+                        color: #ffffff !important;
+                    }
+                }
+            }
+
+            .note-editing-area,
+            .note-editable {
+                background-color: var(--u-dark-surface) !important;
+                color: var(--u-dark-text-primary) !important;
+            }
+        }
+    }
+}

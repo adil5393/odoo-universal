@@ -1,0 +1,99 @@
+// ============================================================================
+// Universal Dark Theme - Custom Addons Compatibility Layer
+// Supporting all custom addons in /customaddons
+// ============================================================================
+
+body.o_web_client {
+    // ------------------------------------------------------------------------
+    // Purchase Direct Bill (customaddons/purchase_direct_bill)
+    // ------------------------------------------------------------------------
+    button[name="action_create_direct_bill"] {
+        background-color: var(--u-dark-surface-raised) !important;
+        border: 1px solid var(--u-dark-border-strong) !important;
+        color: var(--u-dark-text-primary) !important;
+        font-weight: 500;
+
+        &:hover {
+            background-color: var(--u-dark-surface-hover) !important;
+            border-color: #556277 !important;
+            color: #ffffff !important;
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Inventory Multi Add & Transfer Wizards (customaddons/inventory_multi_add)
+    // ------------------------------------------------------------------------
+    .o_act_window .modal-dialog {
+        .o_list_renderer .o_list_table {
+            background-color: var(--u-dark-surface) !important;
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Vendor Ledger (customaddons/vendor_ledger)
+    // ------------------------------------------------------------------------
+    .o_vendor_ledger_table,
+    .o_report_financial_table {
+        background-color: var(--u-dark-surface) !important;
+        color: var(--u-dark-text-primary) !important;
+
+        tr {
+            th {
+                background-color: var(--u-dark-surface-raised) !important;
+                color: var(--u-dark-text-secondary) !important;
+                border-bottom: 2px solid var(--u-dark-border-default) !important;
+            }
+
+            td {
+                border-color: var(--u-dark-border-subtle) !important;
+
+                &.o_monetary_cell {
+                    font-variant-numeric: tabular-nums;
+                }
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // HSN Summary (customaddons/hsnsummary)
+    // ------------------------------------------------------------------------
+    .o_hsn_summary {
+        background-color: var(--u-dark-surface) !important;
+        border: 1px solid var(--u-dark-border-default) !important;
+        border-radius: 8px;
+        color: var(--u-dark-text-primary) !important;
+    }
+
+    // ------------------------------------------------------------------------
+    // Product Variant Grid (customaddons/no_print_variant_grid)
+    // ------------------------------------------------------------------------
+    .o_variant_grid_table,
+    .o_product_configurator {
+        background-color: var(--u-dark-surface) !important;
+        border: 1px solid var(--u-dark-border-default) !important;
+        border-radius: 6px;
+
+        th, td {
+            border-color: var(--u-dark-border-subtle) !important;
+        }
+
+        .o_variant_val {
+            color: var(--u-dark-text-primary) !important;
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Book Title / Catalog (customaddons/booktitle)
+    // ------------------------------------------------------------------------
+    .o_booktitle_view {
+        background-color: var(--u-dark-canvas) !important;
+    }
+
+    // ------------------------------------------------------------------------
+    // Attachment & PDF Previews
+    // ------------------------------------------------------------------------
+    .o_attachment_preview {
+        background-color: var(--u-dark-surface-view) !important;
+        border-left: 1px solid var(--u-dark-border-subtle) !important;
+    }
+}

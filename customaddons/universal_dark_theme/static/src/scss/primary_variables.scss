@@ -1,0 +1,24 @@
+// ============================================================================
+// Universal Dark Theme - Primary Variables Override
+// Pre-defines Odoo 17 core SCSS variables before they are evaluated
+// ============================================================================
+
+$o-view-background-color:       #1a1e26 !default;
+$o-main-bg-color:               #0f1217 !default;
+$o-webclient-background-color:  #0f1217 !default;
+$o-main-text-color:             #f0f3f6 !default;
+$o-main-headings-color:         #ffffff !default;
+$o-main-color-muted:            #8b949e !default;
+$o-form-lightsecondary:         #313947 !default;
+$o-border-color:                #313947 !default;
+$o-shadow-color:                rgba(0, 0, 0, 0.6) !default;
+
+// Control panel & list
+$o-control-panel-background-color: #14171d !default;
+$o-control-panel-border-bottom:    1px solid #313947 !default;
+$o-list-footer-bg-color:           #171b22 !default;
+
+// Components
+$o-component-active-color:  #ffffff !default;
+$o-component-active-bg:     #272f42 !default;
+$o-component-active-border: #7c5fa8 !default;

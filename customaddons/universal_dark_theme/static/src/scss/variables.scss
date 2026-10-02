@@ -1,0 +1,161 @@
+// ============================================================================
+// Universal Dark Theme - Design System Tokens & Variables
+// Visual Direction: GitHub Dark / Linear / Modern Enterprise Dashboard
+// ============================================================================
+
+// --- Surface Palette (Muted Charcoal Hierarchy - No Pure Black) ---
+$u-dark-canvas:           #0f1217; // Root page / viewport background
+$u-dark-surface-view:     #14171d; // Action area, search panel, kanban board
+$u-dark-surface:          #1a1e26; // Main table, card, form sheet, modal surface
+$u-dark-surface-alt:      #171b22; // Striped table rows, sub-cards
+$u-dark-surface-raised:   #212631; // Table headers, statusbar, stat buttons, inactive tabs
+$u-dark-surface-hover:    #29303d; // Row hover, item hover
+$u-dark-surface-selected: #272f42; // Selected row, active item (subtle purple/blue tint)
+$u-dark-input-bg:         #13171e; // Input fields, select boxes, search bar
+
+// --- Borders & Dividers ---
+$u-dark-border-subtle:    #252b36; // Subtle cell lines, inner separators
+$u-dark-border-default:   #313947; // Cards, sheets, inputs, standard dividers
+$u-dark-border-strong:    #475366; // Focused inputs, active borders, modals
+
+// --- Typography (High Contrast & Clear Readability - No Washed Out Gray) ---
+$u-dark-text-primary:     #f0f3f6; // Primary field values, data, body text (crisp white)
+$u-dark-text-secondary:   #a5b0be; // Labels, table headers, breadcrumbs, subtitles
+$u-dark-text-muted:       #768390; // Placeholders, inactive hints, timestamps
+$u-dark-text-link:        #58a6ff; // Accessible crisp blue link
+$u-dark-text-link-hover:  #79b8ff; // Hover state for links
+
+// --- Accent & Action Colors (Odoo Enterprise Purple Compatible) ---
+$u-dark-accent-primary:        #7c5fa8;
+$u-dark-accent-primary-hover:  #8f6fc0;
+$u-dark-accent-primary-active: #6a4f94;
+$u-dark-accent-tint:           rgba(124, 95, 168, 0.18);
+$u-dark-accent-border:         rgba(142, 112, 188, 0.4);
+
+// --- Semantic Status Colors (Tuned for Dark Backgrounds) ---
+$u-dark-status-success:        #3fb950;
+$u-dark-status-success-bg:     rgba(63, 185, 80, 0.15);
+$u-dark-status-success-border: rgba(63, 185, 80, 0.35);
+
+$u-dark-status-warning:        #e3b341;
+$u-dark-status-warning-bg:     rgba(227, 179, 65, 0.15);
+$u-dark-status-warning-border: rgba(227, 179, 65, 0.35);
+
+$u-dark-status-danger:         #f85149;
+$u-dark-status-danger-bg:      rgba(248, 81, 73, 0.15);
+$u-dark-status-danger-border:  rgba(248, 81, 73, 0.35);
+
+$u-dark-status-info:           #58a6ff;
+$u-dark-status-info-bg:        rgba(88, 166, 255, 0.15);
+$u-dark-status-info-border:    rgba(88, 166, 255, 0.35);
+
+// ============================================================================
+// Global CSS Custom Properties (Overriding Odoo & Bootstrap core tokens)
+// ============================================================================
+:root,
+body.o_web_client {
+    // Theme token variables
+    --u-dark-canvas:           #{$u-dark-canvas};
+    --u-dark-surface-view:     #{$u-dark-surface-view};
+    --u-dark-surface:          #{$u-dark-surface};
+    --u-dark-surface-alt:      #{$u-dark-surface-alt};
+    --u-dark-surface-raised:   #{$u-dark-surface-raised};
+    --u-dark-surface-hover:    #{$u-dark-surface-hover};
+    --u-dark-surface-selected: #{$u-dark-surface-selected};
+    --u-dark-input-bg:         #{$u-dark-input-bg};
+
+    --u-dark-border-subtle:    #{$u-dark-border-subtle};
+    --u-dark-border-default:   #{$u-dark-border-default};
+    --u-dark-border-strong:    #{$u-dark-border-strong};
+
+    --u-dark-text-primary:     #{$u-dark-text-primary};
+    --u-dark-text-secondary:   #{$u-dark-text-secondary};
+    --u-dark-text-muted:       #{$u-dark-text-muted};
+    --u-dark-text-link:        #{$u-dark-text-link};
+    --u-dark-text-link-hover:  #{$u-dark-text-link-hover};
+
+    --u-dark-accent-primary:        #{$u-dark-accent-primary};
+    --u-dark-accent-primary-hover:  #{$u-dark-accent-primary-hover};
+    --u-dark-accent-tint:           #{$u-dark-accent-tint};
+
+    --u-dark-status-success:        #{$u-dark-status-success};
+    --u-dark-status-warning:        #{$u-dark-status-warning};
+    --u-dark-status-danger:         #{$u-dark-status-danger};
+    --u-dark-status-info:           #{$u-dark-status-info};
+
+    // Override Odoo core view variables
+    --o-view-background-color:       #{$u-dark-surface};
+    --o-webclient-background-color:  #{$u-dark-canvas};
+    --o-main-text-color:             #{$u-dark-text-primary};
+    --ListRenderer-thead-bg-color:   #{$u-dark-surface-raised};
+    --ListRenderer-tfoot-bg-color:   #{$u-dark-surface-raised};
+    --Kanban-background:             #{$u-dark-canvas};
+    --KanbanGroup-background:        #{$u-dark-surface-view};
+    --SearchBar-background-color:    #{$u-dark-input-bg};
+
+    // Override Bootstrap standard CSS variables
+    --body-bg:                   #{$u-dark-canvas};
+    --body-color:                #{$u-dark-text-primary};
+    --bs-body-bg:                #{$u-dark-canvas};
+    --bs-body-color:             #{$u-dark-text-primary};
+    --bs-border-color:           #{$u-dark-border-default};
+
+    // Table tokens
+    --table-bg:                  #{$u-dark-surface};
+    --table-accent-bg:           transparent;
+    --table-striped-bg:          #{$u-dark-surface-alt};
+    --table-hover-bg:            #{$u-dark-surface-hover};
+    --table-active-bg:           #{$u-dark-surface-selected};
+    --table-color:               #{$u-dark-text-primary};
+    --bs-table-bg:               #{$u-dark-surface};
+    --bs-table-accent-bg:        transparent;
+    --bs-table-striped-bg:       #{$u-dark-surface-alt};
+    --bs-table-hover-bg:         #{$u-dark-surface-hover};
+    --bs-table-active-bg:        #{$u-dark-surface-selected};
+    --bs-table-color:            #{$u-dark-text-primary};
+
+    // Cards, Modals, Dropdowns
+    --bs-card-bg:                #{$u-dark-surface};
+    --bs-card-border-color:      #{$u-dark-border-default};
+    --bs-card-color:             #{$u-dark-text-primary};
+    --bs-modal-bg:               #{$u-dark-surface};
+    --bs-modal-border-color:     #{$u-dark-border-strong};
+    --bs-modal-color:            #{$u-dark-text-primary};
+    --bs-dropdown-bg:            #{$u-dark-surface-raised};
+    --bs-dropdown-border-color:  #{$u-dark-border-default};
+    --bs-dropdown-link-color:    #{$u-dark-text-primary};
+    --bs-dropdown-link-hover-bg: #{$u-dark-surface-hover};
+    --bs-dropdown-link-hover-color: #ffffff;
+
+    // Notebooks & Tabs tokens
+    --notebook-link-border-color:                transparent;
+    --notebook-link-border-color-active:         #{$u-dark-border-default};
+    --notebook-link-border-color-hover:          #{$u-dark-surface-hover};
+    --notebook-link-border-color-active-accent:  #{$u-dark-accent-primary};
+    --nav-tabs-border-color:                     #{$u-dark-border-default};
+    --nav-tabs-link-active-bg:                   #{$u-dark-surface-raised};
+    --nav-tabs-link-active-color:                #ffffff;
+    --nav-tabs-link-hover-border-color:          #{$u-dark-border-default};
+
+    // Form inputs tokens
+    --o-input-background-color:                  #{$u-dark-input-bg};
+    --o-input-border-color:                      #{$u-dark-border-default};
+    --o-caret-color:                             #{$u-dark-text-primary};
+    --bs-input-bg:                               #{$u-dark-input-bg};
+    --bs-input-color:                            #{$u-dark-text-primary};
+    --bs-input-border-color:                     #{$u-dark-border-default};
+
+    // Popover & Tooltip tokens
+    --bs-popover-bg:                             #{$u-dark-surface-raised};
+    --bs-popover-border-color:                   #{$u-dark-border-default};
+    --bs-popover-header-bg:                      #{$u-dark-surface};
+    --bs-popover-header-color:                   #ffffff;
+    --bs-popover-body-color:                     #{$u-dark-text-primary};
+    --bs-tooltip-bg:                             #{$u-dark-surface-raised};
+    --bs-tooltip-color:                          #{$u-dark-text-primary};
+
+    // Control panel tokens
+    --ControlPanel-border-bottom:                1px solid #{$u-dark-border-default};
+    --o-control-panel-background-color:          #{$u-dark-surface-view};
+}
+

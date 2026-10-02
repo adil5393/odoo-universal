@@ -1,0 +1,218 @@
+// ============================================================================
+// Universal Dark Theme - Pivot, Graph, Calendar & Settings Views
+// Visual Direction: Modern Enterprise Workspace
+// ============================================================================
+
+body.o_web_client {
+    // ------------------------------------------------------------------------
+    // Pivot Views (Data Matrix)
+    // ------------------------------------------------------------------------
+    .o_pivot {
+        background-color: var(--u-dark-canvas) !important;
+
+        table {
+            background-color: var(--u-dark-surface) !important;
+            color: var(--u-dark-text-primary) !important;
+            border-color: var(--u-dark-border-default) !important;
+
+            // Header columns
+            thead th {
+                background-color: var(--u-dark-surface-raised) !important;
+                color: var(--u-dark-text-primary) !important;
+                border: 1px solid var(--u-dark-border-default) !important;
+                font-weight: 600;
+
+                &.o_pivot_header_cell_closed,
+                &.o_pivot_header_cell_opened {
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: var(--u-dark-surface-hover) !important;
+                    }
+                }
+            }
+
+            // Row headers & measure cells
+            tbody {
+                th {
+                    background-color: var(--u-dark-surface-raised) !important;
+                    color: var(--u-dark-text-primary) !important;
+                    border: 1px solid var(--u-dark-border-default) !important;
+                    font-weight: 600;
+
+                    &:hover {
+                        background-color: var(--u-dark-surface-hover) !important;
+                    }
+                }
+
+                td {
+                    background-color: var(--u-dark-surface) !important;
+                    color: var(--u-dark-text-primary) !important;
+                    border: 1px solid var(--u-dark-border-subtle) !important;
+                    font-variant-numeric: tabular-nums;
+
+                    &:hover {
+                        background-color: var(--u-dark-surface-hover) !important;
+                    }
+                }
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Graph Views (Charts & Visual Analytics)
+    // ------------------------------------------------------------------------
+    .o_graph_view,
+    .o_graph_renderer {
+        background-color: var(--u-dark-canvas) !important;
+        color: var(--u-dark-text-primary) !important;
+
+        .o_graph_canvas_container {
+            background-color: var(--u-dark-surface) !important;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--u-dark-border-default);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Calendar Views
+    // ------------------------------------------------------------------------
+    .o_calendar_view,
+    .o_calendar_renderer {
+        background-color: var(--u-dark-canvas) !important;
+
+        .fc {
+            background-color: var(--u-dark-surface) !important;
+            color: var(--u-dark-text-primary) !important;
+
+            // Calendar table headers
+            .fc-col-header-cell {
+                background-color: var(--u-dark-surface-raised) !important;
+                border-color: var(--u-dark-border-default) !important;
+                color: var(--u-dark-text-secondary) !important;
+                padding: 8px 0;
+            }
+
+            // Grid lines and time slots
+            td, th {
+                border-color: var(--u-dark-border-subtle) !important;
+            }
+
+            // Today's highlight column
+            .fc-day-today {
+                background-color: rgba(124, 95, 168, 0.08) !important;
+            }
+
+            // Days outside current month
+            .fc-day-other {
+                background-color: var(--u-dark-canvas) !important;
+                opacity: 0.5;
+            }
+
+            .fc-timegrid-slot {
+                border-color: var(--u-dark-border-subtle) !important;
+            }
+
+            .fc-timegrid-slot-label {
+                color: var(--u-dark-text-muted) !important;
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Settings Page (Fixing ALL white surfaces in Settings)
+    // ------------------------------------------------------------------------
+    .o_base_settings_view,
+    .o_settings_container {
+        background-color: var(--u-dark-canvas) !important;
+
+        .o_form_renderer {
+            --settings__tab-bg: var(--u-dark-surface-view);
+            --settings__tab-bg--active: var(--u-dark-surface-selected);
+            --settings__tab-color: var(--u-dark-text-secondary);
+            --settings__title-bg: var(--u-dark-surface-raised);
+            background-color: var(--u-dark-canvas) !important;
+        }
+
+        // Settings Left Tab Sidebar
+        .settings_tab {
+            background-color: var(--u-dark-surface-view) !important;
+            border-right: 1px solid var(--u-dark-border-subtle) !important;
+
+            .tab {
+                color: var(--u-dark-text-secondary) !important;
+                padding: 10px 18px;
+                border-radius: 4px;
+                margin: 2px 6px;
+                transition: all 0.12s ease;
+
+                &:hover {
+                    background-color: var(--u-dark-surface-hover) !important;
+                    color: #ffffff !important;
+                }
+
+                &.selected {
+                    background-color: var(--u-dark-surface-selected) !important;
+                    color: #ffffff !important;
+                    font-weight: 600;
+                    box-shadow: inset 3px 0 0 var(--u-dark-accent-primary) !important;
+                }
+            }
+        }
+
+        // Main Settings Workspace
+        .settings {
+            background-color: var(--u-dark-canvas) !important;
+
+            // Section Title Headers (h2)
+            .app_settings_block {
+                h2 {
+                    background-color: var(--u-dark-surface-raised) !important;
+                    color: #ffffff !important;
+                    border-bottom: 1px solid var(--u-dark-border-default) !important;
+                    padding: 10px 16px;
+                    margin-bottom: 16px;
+                }
+
+                h3 {
+                    color: var(--u-dark-text-secondary) !important;
+                }
+            }
+
+            // Setting Search Header bar
+            .settingSearchHeader {
+                background-color: var(--u-dark-surface-raised) !important;
+                color: #ffffff !important;
+                border: 1px solid var(--u-dark-border-default) !important;
+                border-radius: 6px;
+                padding: 8px 14px;
+                margin-bottom: 14px;
+            }
+
+            // Setting Box Cards
+            .o_setting_box {
+                background-color: var(--u-dark-surface) !important;
+                border: 1px solid var(--u-dark-border-default) !important;
+                border-radius: 8px !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+                padding: 16px 20px;
+                margin-bottom: 12px;
+
+                .o_setting_right_pane {
+                    color: var(--u-dark-text-primary) !important;
+
+                    .o_form_label {
+                        color: #ffffff !important;
+                        font-weight: 600;
+                    }
+
+                    .text-muted {
+                        color: var(--u-dark-text-secondary) !important;
+                    }
+                }
+            }
+        }
+    }
+}

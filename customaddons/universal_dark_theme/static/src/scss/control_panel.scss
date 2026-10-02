@@ -1,0 +1,278 @@
+// ============================================================================
+// Universal Dark Theme - Control Panel, Breadcrumbs & Search Systems
+// Visual Direction: Modern Enterprise Filtering & Navigation Chrome
+// ============================================================================
+
+body.o_web_client {
+    // ------------------------------------------------------------------------
+    // Top Control Panel Bar
+    // ------------------------------------------------------------------------
+    .o_control_panel {
+        background-color: var(--u-dark-surface-view) !important;
+        border-bottom: 1px solid var(--u-dark-border-subtle) !important;
+        color: var(--u-dark-text-primary) !important;
+
+        .o_control_panel_main,
+        .o_control_panel_breadcrumbs,
+        .o_control_panel_actions,
+        .o_control_panel_navigation,
+        .o_cp_bottom,
+        .o_cp_bottom_left,
+        .o_cp_bottom_right {
+            background-color: transparent !important;
+        }
+
+        // Breadcrumbs Hierarchy
+        .breadcrumb {
+            background-color: transparent !important;
+            margin-bottom: 0;
+
+            .breadcrumb-item {
+                font-size: 1.15rem;
+
+                a {
+                    color: var(--u-dark-text-secondary) !important;
+                    transition: color 0.12s ease;
+
+                    &:hover {
+                        color: var(--u-dark-text-link) !important;
+                        text-decoration: none;
+                    }
+                }
+
+                &.active,
+                &:last-child {
+                    color: #ffffff !important;
+                    font-weight: 700;
+                }
+
+                & + .breadcrumb-item::before {
+                    color: var(--u-dark-text-muted) !important;
+                    content: "/";
+                    padding: 0 8px;
+                }
+            }
+        }
+
+        // Pager (Record counting & next/prev navigation)
+        .o_pager {
+            .o_pager_value {
+                color: #ffffff !important;
+                font-weight: 600;
+            }
+
+            .o_pager_limit {
+                color: var(--u-dark-text-secondary) !important;
+            }
+
+            .btn-group {
+                button {
+                    background-color: var(--u-dark-surface-raised) !important;
+                    border: 1px solid var(--u-dark-border-default) !important;
+                    color: var(--u-dark-text-primary) !important;
+                    padding: 4px 10px;
+
+                    &:hover {
+                        background-color: var(--u-dark-surface-hover) !important;
+                        color: #ffffff !important;
+                    }
+
+                    &:disabled {
+                        opacity: 0.4;
+                        cursor: not-allowed;
+                    }
+                }
+            }
+        }
+
+        // View Mode Switcher Buttons (List, Kanban, Pivot, Graph, Calendar)
+        .o_cp_switch_buttons {
+            .btn {
+                background-color: transparent !important;
+                border: 1px solid transparent !important;
+                color: var(--u-dark-text-secondary) !important;
+                border-radius: 4px;
+                padding: 4px 8px;
+                margin: 0 1px;
+                transition: all 0.12s ease;
+
+                &:hover {
+                    background-color: var(--u-dark-surface-hover) !important;
+                    color: #ffffff !important;
+                }
+
+                &.active {
+                    background-color: var(--u-dark-surface-raised) !important;
+                    border-color: var(--u-dark-border-default) !important;
+                    color: #ffffff !important;
+                }
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Search Bar & Search Options
+    // ------------------------------------------------------------------------
+    .o_searchview {
+        background-color: var(--u-dark-input-bg) !important;
+        border: 1px solid var(--u-dark-border-default) !important;
+        border-radius: 6px !important;
+        padding: 3px 10px;
+        min-height: 34px;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+        &:focus-within {
+            border-color: var(--u-dark-accent-primary-hover) !important;
+            box-shadow: 0 0 0 2px rgba(142, 112, 188, 0.25) !important;
+        }
+
+        .o_searchview_input {
+            background-color: transparent !important;
+            color: var(--u-dark-text-primary) !important;
+            border: none !important;
+            outline: none !important;
+
+            &::placeholder {
+                color: var(--u-dark-text-muted) !important;
+                opacity: 0.9;
+            }
+        }
+
+        // Search Filter Facet Pills
+        .o_searchview_facet {
+            background-color: #222936 !important;
+            border: 1px solid #354254 !important;
+            border-radius: 4px !important;
+            margin: 2px 4px 2px 0;
+            padding: 2px 8px;
+
+            .o_searchview_facet_label {
+                background-color: transparent !important;
+                color: var(--u-dark-text-link) !important;
+                font-weight: 600;
+                font-size: 0.82rem;
+                padding-right: 4px;
+            }
+
+            .o_facet_values {
+                color: #ffffff !important;
+                font-size: 0.82rem;
+            }
+
+            .o_facet_remove {
+                color: var(--u-dark-text-secondary) !important;
+                cursor: pointer;
+                padding-left: 6px;
+
+                &:hover {
+                    color: var(--u-dark-status-danger) !important;
+                }
+            }
+        }
+
+        // Autocomplete search popup
+        .o_searchview_autocomplete {
+            background-color: var(--u-dark-surface) !important;
+            border: 1px solid var(--u-dark-border-strong) !important;
+            border-radius: 6px !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+            z-index: 1050;
+
+            .o_menu_item {
+                color: var(--u-dark-text-primary) !important;
+                padding: 7px 16px;
+
+                &:hover,
+                &.focus {
+                    background-color: var(--u-dark-surface-hover) !important;
+                    color: #ffffff !important;
+                }
+
+                .o_expand {
+                    color: var(--u-dark-text-muted) !important;
+                }
+            }
+        }
+    }
+
+    // Filter, Group By, and Favorites Menus
+    .o_search_options,
+    .o_search_bar_menu {
+        .dropdown-menu {
+            background-color: var(--u-dark-surface) !important;
+            border: 1px solid var(--u-dark-border-default) !important;
+            border-radius: 6px !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+            min-width: 240px;
+
+            .dropdown-item {
+                color: var(--u-dark-text-primary) !important;
+
+                &:hover,
+                &:focus {
+                    background-color: var(--u-dark-surface-hover) !important;
+                    color: #ffffff !important;
+                }
+
+                &.selected {
+                    font-weight: 600;
+                    color: #ffffff !important;
+
+                    &:before {
+                        color: var(--u-dark-accent-primary-hover);
+                    }
+                }
+            }
+
+            .dropdown-divider {
+                border-top: 1px solid var(--u-dark-border-subtle) !important;
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Search Panel (Category Sidebar in Contacts, Inventory, Accounting)
+    // ------------------------------------------------------------------------
+    .o_search_panel {
+        background-color: var(--u-dark-surface-view) !important;
+        border-right: 1px solid var(--u-dark-border-subtle) !important;
+
+        .o_search_panel_section {
+            .o_search_panel_section_header {
+                color: var(--u-dark-text-secondary) !important;
+                font-weight: 700;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                padding: 12px 14px 4px 14px;
+            }
+
+            .o_search_panel_category_value,
+            .o_search_panel_filter_value {
+                color: var(--u-dark-text-primary) !important;
+                border-radius: 4px;
+                margin: 2px 6px;
+                padding: 6px 10px;
+                transition: all 0.12s ease;
+
+                &:hover {
+                    background-color: var(--u-dark-surface-hover) !important;
+                    color: #ffffff !important;
+                }
+
+                &.active {
+                    background-color: var(--u-dark-surface-raised) !important;
+                    color: #ffffff !important;
+                    font-weight: 600;
+                    border-left: 3px solid var(--u-dark-accent-primary);
+                }
+
+                .badge {
+                    background-color: var(--u-dark-surface-raised) !important;
+                    color: var(--u-dark-text-secondary) !important;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

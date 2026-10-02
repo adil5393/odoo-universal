@@ -1,0 +1,154 @@
+// ============================================================================
+// Universal Dark Theme - Kanban Views, Columns & Cards
+// Visual Direction: Linear Board / Modern Dark Kanban
+// ============================================================================
+
+body.o_web_client {
+    .o_kanban_view {
+        background-color: var(--u-dark-canvas) !important;
+        --Kanban-background: var(--u-dark-canvas) !important;
+        --KanbanGroup-background: var(--u-dark-surface-view) !important;
+
+        .o_kanban_renderer {
+            background-color: var(--u-dark-canvas) !important;
+
+            // ----------------------------------------------------------------
+            // Kanban Column Group (e.g. Pipeline Stages)
+            // ----------------------------------------------------------------
+            .o_kanban_group {
+                background-color: var(--u-dark-surface-view) !important;
+                border: 1px solid var(--u-dark-border-subtle) !important;
+                border-radius: 8px !important;
+                padding: 10px;
+
+                // Column Header
+                .o_kanban_header {
+                    margin-bottom: 8px;
+
+                    .o_kanban_header_title {
+                        .o_column_title {
+                            color: #ffffff !important;
+                            font-weight: 600;
+                            font-size: 0.95rem;
+                        }
+
+                        .o_kanban_counter {
+                            color: var(--u-dark-text-muted) !important;
+                        }
+                    }
+
+                    // Column Action Buttons (+ and cog)
+                    .o_kanban_quick_add,
+                    .o_kanban_config {
+                        color: var(--u-dark-text-muted) !important;
+
+                        &:hover {
+                            color: #ffffff !important;
+                        }
+                    }
+
+                    // Column Progress Bar
+                    .o_kanban_counter_progress {
+                        background-color: var(--u-dark-surface-raised) !important;
+                        border-radius: 4px;
+                    }
+                }
+
+                // Folded Column
+                &.o_column_folded {
+                    background-color: var(--u-dark-surface-view) !important;
+                    border-color: var(--u-dark-border-subtle) !important;
+
+                    .o_kanban_header_title {
+                        color: var(--u-dark-text-muted) !important;
+                    }
+                }
+            }
+
+            // ----------------------------------------------------------------
+            // Kanban Record Cards (Targeting inner div to beat Odoo core white)
+            // ----------------------------------------------------------------
+            .o_kanban_record,
+            .oe_kanban_card,
+            .o_kanban_record > div:not(.o_dropdown_kanban),
+            .o_kanban_quick_create {
+                background-color: var(--u-dark-surface) !important;
+                border: 1px solid var(--u-dark-border-default) !important;
+                border-radius: 6px !important;
+                color: var(--u-dark-text-primary) !important;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+                transition: background-color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+            }
+
+            // Card Hover State
+            .o_kanban_record:hover,
+            .oe_kanban_card:hover,
+            .o_kanban_record:hover > div:not(.o_dropdown_kanban) {
+                background-color: var(--u-dark-surface-hover) !important;
+                border-color: var(--u-dark-border-strong) !important;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45) !important;
+            }
+
+            // Card Typography & Internal Structure
+            .o_kanban_record {
+                // Card Titles
+                .o_kanban_record_title {
+                    color: #ffffff !important;
+                    font-weight: 600;
+                    font-size: 0.95rem;
+                }
+
+                .o_kanban_record_subtitle {
+                    color: var(--u-dark-text-secondary) !important;
+                    font-size: 0.85rem;
+                }
+
+                // Card Dropdown Toggler
+                .o_dropdown_kanban {
+                    .dropdown-toggle {
+                        color: var(--u-dark-text-muted) !important;
+
+                        &:hover {
+                            color: #ffffff !important;
+                        }
+                    }
+                }
+
+                // Card Bottom Footer
+                .o_kanban_record_bottom {
+                    border-top: 1px solid var(--u-dark-border-subtle);
+                    margin-top: 8px;
+                    padding-top: 6px;
+
+                    .oe_kanban_bottom_left,
+                    .oe_kanban_bottom_right {
+                        color: var(--u-dark-text-secondary);
+                    }
+                }
+
+                // Many2many tags in kanban cards
+                .o_tag {
+                    background-color: #242c38 !important;
+                    border: 1px solid #374457 !important;
+                    color: var(--u-dark-text-primary) !important;
+                }
+            }
+
+            // Column Quick Create (Add a column dashed box)
+            .o_column_quick_create {
+                background-color: rgba(255, 255, 255, 0.03) !important;
+                border: 2px dashed var(--u-dark-border-default) !important;
+                border-radius: 8px;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.06) !important;
+                    border-color: var(--u-dark-border-strong) !important;
+                }
+
+                .o_quick_create_folded {
+                    color: var(--u-dark-text-secondary) !important;
+                }
+            }
+        }
+    }
+}

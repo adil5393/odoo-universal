@@ -1,0 +1,102 @@
+// ============================================================================
+// Universal Dark Theme - Bootstrap Overridden Variables
+// Pre-defines Bootstrap 5 backend variables before compilation
+// ============================================================================
+
+$body-bg:                   #0f1217 !default;
+$body-color:                #f0f3f6 !default;
+
+$border-color:              #313947 !default;
+
+$nav-tabs-border-color:     #313947 !default;
+$nav-tabs-link-active-bg:   #1a1e26 !default;
+$nav-tabs-link-active-color: #ffffff !default;
+$nav-tabs-link-active-border-color: #313947 #313947 transparent !default;
+$nav-tabs-link-hover-border-color: #424c5e !default;
+
+$card-bg:                   #1a1e26 !default;
+$card-border-color:         #313947 !default;
+$card-color:                #f0f3f6 !default;
+
+$modal-content-bg:          #1a1e26 !default;
+$modal-content-border-color: #313947 !default;
+$modal-content-color:       #f0f3f6 !default;
+
+$dropdown-bg:               #212631 !default;
+$dropdown-border-color:     #313947 !default;
+$dropdown-color:            #f0f3f6 !default;
+$dropdown-link-color:       #f0f3f6 !default;
+$dropdown-link-hover-bg:    #29303d !default;
+$dropdown-link-hover-color: #ffffff !default;
+$dropdown-link-active-bg:   #272f42 !default;
+$dropdown-link-active-color: #ffffff !default;
+$dropdown-divider-bg:       #313947 !default;
+
+$popover-bg:                #212631 !default;
+$popover-border-color:      #313947 !default;
+$popover-header-bg:         #1a1e26 !default;
+$popover-header-color:      #ffffff !default;
+$popover-body-color:        #f0f3f6 !default;
+
+$tooltip-bg:                #212631 !default;
+$tooltip-color:             #f0f3f6 !default;
+
+$list-group-bg:             #1a1e26 !default;
+$list-group-border-color:   #313947 !default;
+$list-group-hover-bg:       #29303d !default;
+$list-group-action-color:   #f0f3f6 !default;
+$list-group-action-hover-color: #ffffff !default;
+
+$input-bg:                  #13171e !default;
+$input-color:               #f0f3f6 !default;
+$input-border-color:        #313947 !default;
+$input-focus-bg:            #171b22 !default;
+$input-focus-border-color:  #7c5fa8 !default;
+$input-placeholder-color:   #768390 !default;
+
+$form-select-bg:            #13171e !default;
+$form-select-color:         #f0f3f6 !default;
+$form-select-border-color:  #313947 !default;
+
+$form-check-input-bg:       #13171e !default;
+$form-check-input-border:   1px solid #313947 !default;
+
+// Gray scale overrides
+$gray-100:                  #14171d !default;
+$gray-200:                  #1a1e26 !default;
+$gray-300:                  #313947 !default;
+$gray-400:                  #424c5e !default;
+$gray-500:                  #647087 !default;
+$gray-600:                  #8b949e !default;
+$gray-700:                  #c9d1d9 !default;
+$gray-800:                  #e6edf3 !default;
+$gray-900:                  #f0f3f6 !default;
+
+// Input addons & disabled
+$input-disabled-bg:              #14171d !default;
+$input-group-addon-bg:           #1a1e26 !default;
+$input-group-addon-color:        #a5b0be !default;
+$input-group-addon-border-color: #313947 !default;
+
+// Accordion
+$accordion-bg:                   #1a1e26 !default;
+$accordion-button-bg:            #1a1e26 !default;
+$accordion-button-color:         #f0f3f6 !default;
+$accordion-button-active-bg:     #212631 !default;
+$accordion-button-active-color:  #ffffff !default;
+$accordion-border-color:         #313947 !default;
+
+// Pagination
+$pagination-bg:                  #1a1e26 !default;
+$pagination-color:               #f0f3f6 !default;
+$pagination-border-color:        #313947 !default;
+$pagination-hover-bg:            #29303d !default;
+$pagination-hover-color:         #ffffff !default;
+$pagination-hover-border-color:  #313947 !default;
+$pagination-active-bg:           #382d4c !default;
+$pagination-active-color:        #d8c2ff !default;
+$pagination-active-border-color: #7c5fa8 !default;
+$pagination-disabled-bg:         #14171d !default;
+$pagination-disabled-color:      #768390 !default;
+$pagination-disabled-border-color: #252b36 !default;
+

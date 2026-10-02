@@ -1,0 +1,269 @@
+// ============================================================================
+// Universal Dark Theme - List Views, Data Tables & Embedded Sub-tables
+// Visual Direction: Linear / GitHub Dark Scannable Data Tables
+// ============================================================================
+
+body.o_web_client {
+    // ------------------------------------------------------------------------
+    // General List View Container
+    // ------------------------------------------------------------------------
+    .o_list_view,
+    .o_list_renderer {
+        background-color: var(--u-dark-canvas) !important;
+        --ListRenderer-thead-bg-color: var(--u-dark-surface-raised) !important;
+        --ListRenderer-tfoot-bg-color: var(--u-dark-surface-raised) !important;
+        --ListRenderer-thead-border-end-color: var(--u-dark-border-subtle) !important;
+
+        // Embedded line item tables inside form views (e.g. Sales Lines, PO Lines, Invoice Lines)
+        .o_field_widget &,
+        .o_field_x2many_list & {
+            --ListRenderer-thead-bg-color: var(--u-dark-surface-raised) !important;
+            --ListRenderer-tfoot-bg-color: var(--u-dark-surface-raised) !important;
+        }
+
+        // --------------------------------------------------------------------
+        // The List Table
+        // --------------------------------------------------------------------
+        .o_list_table,
+        .table {
+            --table-bg: var(--u-dark-surface) !important;
+            --table-accent-bg: transparent !important;
+            --table-striped-bg: var(--u-dark-surface-alt) !important;
+            --table-hover-bg: var(--u-dark-surface-hover) !important;
+            --table-active-bg: var(--u-dark-surface-selected) !important;
+            --table-color: var(--u-dark-text-primary) !important;
+            --bs-table-bg: var(--u-dark-surface) !important;
+            --bs-table-accent-bg: transparent !important;
+            --bs-table-striped-bg: var(--u-dark-surface-alt) !important;
+            --bs-table-hover-bg: var(--u-dark-surface-hover) !important;
+            --bs-table-active-bg: var(--u-dark-surface-selected) !important;
+            --bs-table-color: var(--u-dark-text-primary) !important;
+
+            background-color: var(--u-dark-surface) !important;
+            color: var(--u-dark-text-primary) !important;
+            border-collapse: collapse;
+
+            // Universal override for Bootstrap 5's inset box-shadow cell coloring
+            > :not(caption) > * > * {
+                background-color: transparent !important;
+                box-shadow: none !important;
+                border-bottom: 1px solid var(--u-dark-border-subtle) !important;
+                border-top: none !important;
+                color: var(--u-dark-text-primary) !important;
+            }
+
+            // ----------------------------------------------------------------
+            // Table Header (Visually belonging to the table surface)
+            // ----------------------------------------------------------------
+            thead {
+                background-color: var(--u-dark-surface-raised) !important;
+                border-bottom: 2px solid var(--u-dark-border-default) !important;
+
+                tr {
+                    background-color: var(--u-dark-surface-raised) !important;
+
+                    th {
+                        background-color: var(--u-dark-surface-raised) !important;
+                        color: var(--u-dark-text-secondary) !important;
+                        font-weight: 600;
+                        font-size: 0.82rem;
+                        letter-spacing: 0.2px;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        border-bottom: 2px solid var(--u-dark-border-default) !important;
+                        border-right: 1px solid var(--u-dark-border-subtle) !important;
+                        border-top: none !important;
+                        border-left: none !important;
+
+                        &.o_column_sortable {
+                            cursor: pointer;
+
+                            &:hover {
+                                color: #ffffff !important;
+                            }
+                        }
+
+                        // Sorting caret indicators
+                        i.fa-sort-asc,
+                        i.fa-sort-desc,
+                        i.fa-sort {
+                            color: var(--u-dark-accent-primary-hover) !important;
+                            margin-left: 4px;
+                        }
+
+                        .o_resize {
+                            border-right: 1px solid var(--u-dark-border-default);
+
+                            &:hover {
+                                border-right: 2px solid var(--u-dark-accent-primary);
+                            }
+                        }
+                    }
+                }
+
+                .o_optional_columns_dropdown_toggle {
+                    color: var(--u-dark-text-muted) !important;
+
+                    &:hover {
+                        color: #ffffff !important;
+                    }
+                }
+            }
+
+            // ----------------------------------------------------------------
+            // Table Body Rows (Clean Charcoal Hierarchy)
+            // ----------------------------------------------------------------
+            tbody {
+                // Base data row
+                tr.o_data_row {
+                    background-color: var(--u-dark-surface) !important;
+                    transition: background-color 0.1s ease;
+
+                    > td {
+                        background-color: var(--u-dark-surface) !important;
+                        color: var(--u-dark-text-primary) !important;
+                        border-bottom: 1px solid var(--u-dark-border-subtle) !important;
+                        padding-top: 8px;
+                        padding-bottom: 8px;
+                        font-size: 0.88rem;
+
+                        // Field values in table cells
+                        .o_data_cell {
+                            color: var(--u-dark-text-primary) !important;
+                        }
+                    }
+
+                    // Alternating striped row
+                    &:nth-child(even) {
+                        background-color: var(--u-dark-surface-alt) !important;
+
+                        > td {
+                            background-color: var(--u-dark-surface-alt) !important;
+                        }
+                    }
+
+                    // Row hover state (Lighter than normal row)
+                    &:hover {
+                        background-color: var(--u-dark-surface-hover) !important;
+
+                        > td {
+                            background-color: var(--u-dark-surface-hover) !important;
+                            color: #ffffff !important;
+                        }
+                    }
+
+                    // Selected row state (Accent-tinted dark background + Left indicator)
+                    &.o_is_selected,
+                    &.o_selected_row {
+                        background-color: var(--u-dark-surface-selected) !important;
+                        box-shadow: inset 3px 0 0 0 var(--u-dark-accent-primary-hover) !important;
+
+                        > td {
+                            background-color: var(--u-dark-surface-selected) !important;
+                            color: #ffffff !important;
+                            border-bottom-color: var(--u-dark-border-strong) !important;
+                        }
+                    }
+
+                    // Row Checkbox Selector
+                    .o_list_record_selector {
+                        .form-check-input {
+                            background-color: var(--u-dark-input-bg);
+                            border: 1px solid var(--u-dark-border-strong);
+                            cursor: pointer;
+
+                            &:checked {
+                                background-color: var(--u-dark-accent-primary);
+                                border-color: var(--u-dark-accent-primary);
+                            }
+                        }
+                    }
+
+                    // Numeric & Monetary columns (Tabular digits)
+                    .o_list_number,
+                    .o_monetary_cell {
+                        font-variant-numeric: tabular-nums;
+                    }
+                }
+
+                // Group by header rows (e.g., grouped by customer, stage, category)
+                tr.o_group_header {
+                    background-color: var(--u-dark-surface-raised) !important;
+                    border-top: 1px solid var(--u-dark-border-default) !important;
+                    border-bottom: 1px solid var(--u-dark-border-default) !important;
+                    cursor: pointer;
+
+                    > th,
+                    > td {
+                        background-color: var(--u-dark-surface-raised) !important;
+                        color: #ffffff !important;
+                        font-weight: 600;
+                        padding-top: 8px;
+                        padding-bottom: 8px;
+
+                        .o_group_name {
+                            color: #ffffff !important;
+                        }
+
+                        .o_group_count {
+                            color: var(--u-dark-text-muted) !important;
+                            font-weight: 400;
+                            font-size: 0.8rem;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: var(--u-dark-surface-hover) !important;
+
+                        > th,
+                        > td {
+                            background-color: var(--u-dark-surface-hover) !important;
+                        }
+                    }
+                }
+
+                // Section & Note rows in document lines (e.g. Sales / Invoices)
+                tr.o_is_section {
+                    background-color: #202633 !important;
+
+                    > td {
+                        background-color: #202633 !important;
+                        color: #ffffff !important;
+                        font-weight: 600;
+                        border-top: 1px solid var(--u-dark-border-default) !important;
+                        border-bottom: 1px solid var(--u-dark-border-default) !important;
+                    }
+                }
+
+                tr.o_is_note {
+                    background-color: rgba(255, 255, 255, 0.02) !important;
+
+                    > td {
+                        background-color: transparent !important;
+                        color: var(--u-dark-text-secondary) !important;
+                        font-style: italic;
+                    }
+                }
+            }
+
+            // ----------------------------------------------------------------
+            // Table Footer (Totals & Aggregations)
+            // ----------------------------------------------------------------
+            tfoot {
+                background-color: var(--u-dark-surface-raised) !important;
+                border-top: 2px solid var(--u-dark-border-default) !important;
+
+                tr {
+                    td {
+                        background-color: var(--u-dark-surface-raised) !important;
+                        color: #ffffff !important;
+                        font-weight: 700;
+                        border: none !important;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

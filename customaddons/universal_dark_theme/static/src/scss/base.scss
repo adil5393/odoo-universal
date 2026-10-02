@@ -1,0 +1,156 @@
+// ============================================================================
+// Universal Dark Theme - Base Surfaces, View Containers & Typography
+// ============================================================================
+
+// Top-level HTML & Body Root
+html,
+body,
+body.o_web_client {
+    background-color: var(--u-dark-canvas) !important;
+    color: var(--u-dark-text-primary) !important;
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    // Viewport hierarchy: Canvas -> Action Manager -> Content Area
+    .o_action_manager,
+    .o_action_manager > .o_action,
+    .o_action > .o_content,
+    .o_view_controller,
+    .o_form_view_container {
+        background-color: var(--u-dark-canvas) !important;
+        color: var(--u-dark-text-primary) !important;
+    }
+
+    // Modern slim dark scrollbars
+    scrollbar-color: var(--u-dark-border-strong) var(--u-dark-canvas);
+    scrollbar-width: thin;
+
+    *::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: var(--u-dark-canvas);
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: var(--u-dark-border-strong);
+        border-radius: 4px;
+        border: 2px solid var(--u-dark-canvas);
+
+        &:hover {
+            background-color: var(--u-dark-text-muted);
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Typography: Crisp & High Contrast (No Washed-Out Gray)
+    // ------------------------------------------------------------------------
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 {
+        color: #ffffff !important;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+    }
+
+    p, span, div, label, td, th {
+        color: inherit;
+    }
+
+    a,
+    .o_form_uri {
+        color: var(--u-dark-text-link) !important;
+        text-decoration: none;
+
+        &:hover {
+            color: var(--u-dark-text-link-hover) !important;
+            text-decoration: underline;
+        }
+    }
+
+    // Prevent black/dark text classes from disappearing on dark surfaces
+    .text-dark,
+    .text-black,
+    .text-900,
+    .text-800 {
+        color: var(--u-dark-text-primary) !important;
+    }
+
+    .text-700,
+    .text-600 {
+        color: var(--u-dark-text-secondary) !important;
+    }
+
+    .text-muted {
+        color: var(--u-dark-text-muted) !important;
+    }
+
+    // ------------------------------------------------------------------------
+    // Universal Surface Helpers (Eliminating all remaining white surfaces)
+    // ------------------------------------------------------------------------
+    .bg-white,
+    .bg-light,
+    .bg-100,
+    .bg-200,
+    .bg-view,
+    .o_view_background_color {
+        background-color: var(--u-dark-surface) !important;
+        color: var(--u-dark-text-primary) !important;
+    }
+
+    .bg-300,
+    .bg-400 {
+        background-color: var(--u-dark-surface-raised) !important;
+        color: var(--u-dark-text-primary) !important;
+    }
+
+    // Global Cards
+    .card {
+        background-color: var(--u-dark-surface) !important;
+        border: 1px solid var(--u-dark-border-default) !important;
+        color: var(--u-dark-text-primary) !important;
+
+        .card-header {
+            background-color: var(--u-dark-surface-raised) !important;
+            border-bottom: 1px solid var(--u-dark-border-default) !important;
+            color: #ffffff !important;
+        }
+
+        .card-body {
+            background-color: var(--u-dark-surface) !important;
+            color: var(--u-dark-text-primary) !important;
+        }
+
+        .card-footer {
+            background-color: var(--u-dark-surface-view) !important;
+            border-top: 1px solid var(--u-dark-border-default) !important;
+        }
+    }
+
+    // Global Dividers
+    .border,
+    .border-top,
+    .border-bottom,
+    .border-start,
+    .border-end {
+        border-color: var(--u-dark-border-subtle) !important;
+    }
+
+    hr {
+        border-color: var(--u-dark-border-subtle) !important;
+        opacity: 0.5;
+    }
+
+    // Empty View / No Content Helper
+    .o_view_nocontent {
+        .o_nocontent_help {
+            color: var(--u-dark-text-primary) !important;
+
+            p {
+                color: var(--u-dark-text-secondary) !important;
+            }
+        }
+    }
+}
