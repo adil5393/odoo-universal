@@ -56,3 +56,16 @@ class PurchaseOrder(models.Model):
                 .create(invoice_vals)
 
         return self.action_view_invoice(moves)
+
+    def action_open_summary_bill(self):
+        self.ensure_one()
+        if self.state not in ('purchase', 'done'):
+            raise UserError(_("You can only create a bill for a confirmed purchase order."))
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _("Create Summary Bill"),
+            'res_model': 'purchase.summary.bill.wizard',
+            'view_mode': 'form',
+            'target': 'new',
+            'context': {'default_order_id': self.id},
+        }

@@ -16,6 +16,14 @@
                         confirm="This copies all order lines into a new vendor bill, regardless of received quantity. Continue?"/>
             </xpath>
 
+            <xpath expr="//header/field[@name='state']" position="before">
+                <button name="action_open_summary_bill"
+                        string="Create Summary Bill (Amount Only)"
+                        type="object"
+                        class="btn-secondary"
+                        invisible="state not in ('purchase', 'done')"/>
+            </xpath>
+
         </field>
     </record>
 

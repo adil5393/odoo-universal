@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_move_multi_add_line_tree" model="ir.ui.view">
+        <field name="name">move.multi.add.line.tree</field>
+        <field name="model">move.multi.add.line</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom" create="0">
+                <field name="product_id"/>
+                <field name="uom_id"/>
+                <field name="qty"/>
+                <field name="price_unit"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_move_multi_add_wizard_form" model="ir.ui.view">
+        <field name="name">move.multi.add.wizard.form</field>
+        <field name="model">move.multi.add.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add Multiple Products">
+                <field name="state" invisible="1"/>
+                <sheet>
+                    <group>
+                        <field name="move_id" readonly="1"/>
+                        <field name="product_ids"
+                               widget="many2many_tags"
+                               options="{'no_create': True}"
+                               invisible="state == 'qty'"
+                               placeholder="Search products — use Search More for checkboxes…"/>
+                    </group>
+                    <separator string="Set Quantities" invisible="state == 'select'"/>
+                    <field name="line_ids" nolabel="1" invisible="state == 'select'"/>
+                </sheet>
+                <footer>
+                    <button name="action_load_lines" type="object" class="btn-primary"
+                            string="Next: Set Quantities" invisible="state == 'qty'"/>
+                    <button name="action_apply" type="object" class="btn-primary"
+                            string="Add to Document" invisible="state == 'select'"/>
+                    <button special="cancel" string="Discard"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>
