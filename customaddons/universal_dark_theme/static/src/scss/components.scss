@@ -524,3 +524,54 @@ body.o_web_client {
         }
     }
 }
+
+// ============================================================================
+// Onboarding Panel (setup steps banner, e.g. top of Accounting Dashboard)
+// Odoo paints it with a light gray gradient, which made the white titles unreadable.
+// ============================================================================
+body.o_web_client {
+    .o_onboarding_main {
+        background: linear-gradient(0deg, var(--u-dark-surface-view) 0%, var(--u-dark-surface) 100%) !important;
+        border-color: var(--u-dark-border-default) !important;
+        color: var(--u-dark-text-primary);
+
+        .o_onboarding_step_title {
+            color: var(--u-dark-text-primary) !important;
+            font-weight: 600;
+        }
+
+        .o_onboarding_step_content_info,
+        .o_onboarding_step_content_info .small {
+            color: var(--u-dark-text-secondary) !important;
+        }
+
+        .o_onboarding_step_action:not(.o_onboarding_step_action__done) {
+            background-color: transparent !important;
+            border-color: var(--u-dark-text-link) !important;
+            color: var(--u-dark-text-link) !important;
+
+            &:hover {
+                background-color: var(--u-dark-accent-tint) !important;
+                color: var(--u-dark-text-link-hover) !important;
+            }
+        }
+
+        .o_onboarding_step_action__done {
+            color: var(--u-dark-status-success) !important;
+        }
+
+        .o_onboarding_btn_close {
+            color: var(--u-dark-text-secondary) !important;
+
+            &:hover {
+                color: var(--u-dark-text-primary) !important;
+            }
+        }
+
+        .o_onboarding_completed_message {
+            background-color: var(--u-dark-surface-raised) !important;
+            border-color: var(--u-dark-border-default) !important;
+            color: var(--u-dark-text-primary) !important;
+        }
+    }
+}
