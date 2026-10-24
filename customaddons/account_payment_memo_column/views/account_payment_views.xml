@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Base payments list: used by customer and vendor payments -->
+    <record id="view_account_payment_tree_memo" model="ir.ui.view">
+        <field name="name">account.payment.tree.memo</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_tree"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="ref" string="Memo" optional="show"/>
+            </field>
+        </field>
+    </record>
+</odoo>
