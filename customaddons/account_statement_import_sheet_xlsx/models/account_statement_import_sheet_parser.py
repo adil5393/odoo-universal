@@ -5,6 +5,8 @@ from datetime import date, datetime
 from odoo import _, models
 from odoo.exceptions import UserError
 
+from .fingerprint import numbered_fingerprints
+
 _logger = logging.getLogger(__name__)
 
 try:
@@ -93,6 +95,22 @@ def _normalize(name):
 
 class AccountStatementImportSheetParser(models.TransientModel):
     _inherit = "account.statement.import.sheet.parser"
+
+    def parse(self, data_file, mapping, filename):
+        """Give every line without a bank transaction ID a fingerprint ID, so lines
+        already imported from an earlier, overlapping file are skipped."""
+        currency_code, account_number, statements = super().parse(
+            data_file, mapping, filename
+        )
+        for statement in statements:
+            transactions = [
+                (t["date"], t["amount"], t.get("payment_ref"), t.get("ref"), t)
+                for t in statement.get("transactions", [])
+                if not t.get("unique_import_id")
+            ]
+            for transaction, import_id in numbered_fingerprints(transactions):
+                transaction["unique_import_id"] = import_id
+        return currency_code, account_number, statements
 
     def _get_column_indexes(self, header, column_name, mapping):
         """Match column names ignoring case, spaces and punctuation, and say which

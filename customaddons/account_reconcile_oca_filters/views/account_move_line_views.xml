@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Search options of the list under "Reconcile" on the bank line screen -->
+    <record id="account_move_line_search_reconcile_view_filters" model="ir.ui.view">
+        <field name="name">account.move.line.search.reconcile.filters</field>
+        <field name="model">account.move.line</field>
+        <field name="inherit_id" ref="account_reconcile_oca.account_move_line_search_reconcile_view"/>
+        <field name="arch" type="xml">
+            <filter name="misc_filter" position="after">
+                <separator/>
+                <filter string="Exclude Cash journals" name="not_cash"
+                        domain="[('journal_id.type', '!=', 'cash')]"/>
+            </filter>
+            <filter name="trade_receivable" position="after">
+                <group expand="0" string="Group By">
+                    <filter string="Journal" name="groupby_journal" context="{'group_by': 'journal_id'}"/>
+                </group>
+            </filter>
+        </field>
+    </record>
+</odoo>
