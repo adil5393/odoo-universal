@@ -1,0 +1,7 @@
+<odoo>
+  <record id="pos_request_company_rule" model="ir.rule">
+    <field name="name">POS requests: allowed companies</field>
+    <field name="model_id" ref="model_universal_pos_request"/>
+    <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+  </record>
+</odoo>

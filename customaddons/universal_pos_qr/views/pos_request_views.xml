@@ -1,0 +1,18 @@
+<odoo>
+  <record id="view_pos_request_tree" model="ir.ui.view">
+    <field name="name">universal.pos.request.tree</field><field name="model">universal.pos.request</field>
+    <field name="arch" type="xml"><tree create="0" delete="0"><field name="reference"/><field name="invoice_id"/><field name="partner_id"/><field name="amount_paise"/><field name="state"/><field name="company_id" groups="base.group_multi_company"/></tree></field>
+  </record>
+  <record id="view_pos_request_form" model="ir.ui.view">
+    <field name="name">universal.pos.request.form</field><field name="model">universal.pos.request</field>
+    <field name="arch" type="xml"><form create="0" edit="0" delete="0">
+      <header><button name="action_submit" type="object" string="Submit / Retry to POS" class="oe_highlight" invisible="state in ('paid', 'cancelled')"/>
+        <field name="state" widget="statusbar"/></header>
+      <sheet><div class="alert alert-info" role="alert">The request is saved. Submit it to send the QR request to POS; retry uses the same reference.</div>
+        <group><group><field name="reference"/><field name="invoice_id"/><field name="invoice_number"/><field name="partner_id"/><field name="customer_name"/><field name="company_id"/><field name="journal_id"/></group>
+        <group><field name="amount_paise"/><field name="outstanding_paise"/><field name="currency_id"/><field name="instance"/><field name="pos_request_id"/><field name="qr_id"/><field name="last_error"/><field name="payment_id"/><field name="razorpay_payment_id"/><field name="event_id"/><field name="requested_by_id"/></group></group>
+      </sheet></form></field>
+  </record>
+  <record id="action_pos_requests" model="ir.actions.act_window"><field name="name">POS QR Requests</field><field name="res_model">universal.pos.request</field><field name="view_mode">tree,form</field></record>
+  <menuitem id="menu_pos_requests" name="POS QR Requests" parent="account.menu_finance_receivables" action="action_pos_requests" groups="account.group_account_invoice" sequence="95"/>
+</odoo>

@@ -1,0 +1,14 @@
+<odoo>
+  <record id="view_company_pos_qr" model="ir.ui.view">
+    <field name="name">res.company.pos.qr</field><field name="model">res.company</field>
+    <field name="inherit_id" ref="base.view_company_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet/notebook" position="inside">
+        <page string="POS QR" groups="base.group_system">
+          <group><field name="pos_qr_url" placeholder="https://pay.example.com"/><field name="pos_qr_instance"/>
+            <field name="pos_qr_api_key" password="True"/><field name="pos_qr_journal_id"/></group>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>
